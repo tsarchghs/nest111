@@ -24,7 +24,7 @@ async function bootstrap() {
     }
 
     // ✅ everything else = frontend
-    return res.sendFile(join(__dirname, '.', 'src', 'published', 'index.html'));
+    return res.sendFile(join(__dirname, '.', 'published', 'index.html'));
   });
 
   await app.listen(3000);
