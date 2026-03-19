@@ -1,4 +1,4 @@
-const API_BASE = "https://nest111-b1qqjjzj7-voltox-7e302ade.vercel.app/api"
+const API_BASE = "https://nest111-seven.vercel.app/api"
 const SESSION_KEY = 'nexus-platform-session';
 
 export type AppArea = 'erp' | 'admin' | 'pos';
