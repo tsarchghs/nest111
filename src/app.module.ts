@@ -14,7 +14,7 @@ import { PaymentsModule } from './payments/payments.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '.', 'published'),
+      rootPath: join(__dirname, 'published'),
       serveStaticOptions: {
         index: false, // 👈 important
       },
