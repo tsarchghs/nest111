@@ -99,6 +99,21 @@ export class PlatformController {
     return this.platformService.updateBusinessSettings(user, body);
   }
 
+  @AllowedAreas('owner')
+  @Get('owner/studio')
+  getOwnerStudio(@CurrentUser() user: AuthSessionUser) {
+    return this.platformService.getOwnerStudio(user);
+  }
+
+  @AllowedAreas('owner')
+  @Put('owner/studio')
+  updateOwnerStudio(
+    @CurrentUser() user: AuthSessionUser,
+    @Body() body: Record<string, unknown>,
+  ) {
+    return this.platformService.updateOwnerStudio(user, body);
+  }
+
   @AllowedAreas('pos')
   @Get('pos/floor')
   getPosFloor(@CurrentUser() user: AuthSessionUser) {

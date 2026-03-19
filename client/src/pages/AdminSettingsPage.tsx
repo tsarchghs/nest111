@@ -18,6 +18,10 @@ export default function AdminSettingsPage() {
       <section className="rounded-[28px] border border-white/10 bg-slate-950/40 p-6">
         <p className="text-sm uppercase tracking-[0.28em] text-primary/80">Settings</p>
         <h1 className="mt-2 text-4xl font-black tracking-tight">Business Settings</h1>
+        <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
+          Keep this page focused on commercial and operational defaults. Tenant branding
+          and the SaaS look-and-feel now live in the owner studio.
+        </p>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <label className="grid gap-2">
@@ -109,6 +113,16 @@ export default function AdminSettingsPage() {
           <p className="mt-4 text-sm leading-6 text-slate-400">
             These settings drive invoice defaults, ERP behavior, and POS checkout
             calculations across the workspace.
+          </p>
+        </div>
+        <div className="rounded-[28px] border border-primary/20 bg-primary/10 p-6">
+          <p className="text-xs uppercase tracking-[0.25em] text-primary/80">SaaS boundary</p>
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-white">
+            Branding belongs to owners
+          </h2>
+          <p className="mt-4 text-sm leading-6 text-slate-200/80">
+            Admins manage invoicing, tax, and contact defaults. Owners manage tenant
+            identity, theme colors, and the branded login experience.
           </p>
         </div>
         <div className="rounded-[28px] border border-white/10 bg-slate-950/40 p-6">

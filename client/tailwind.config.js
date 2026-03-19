@@ -5,12 +5,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#257bf4',
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
         'background-light': '#f5f7f8',
         'background-dark': '#101722',
       },
       fontFamily: {
-        display: ['Inter', 'sans-serif'],
+        display: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"Manrope"', 'sans-serif'],
       },
     },
   },

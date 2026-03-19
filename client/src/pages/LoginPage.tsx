@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import { useTheme } from '../theme/ThemeContext';
 
 const demoUsers = [
   { label: 'Owner', email: 'owner@nexus.local', role: 'All areas' },
@@ -12,6 +13,7 @@ const demoUsers = [
 export default function LoginPage() {
   const navigate = useNavigate();
   const { user, login, defaultRoute } = useAuth();
+  const { theme } = useTheme();
   const [email, setEmail] = useState('owner@nexus.local');
   const [password, setPassword] = useState('Passw0rd!');
   const [error, setError] = useState('');
@@ -37,31 +39,41 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 py-10">
-      <div className="grid w-full max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <section className="glass-panel rounded-[32px] border border-white/10 p-8 text-white shadow-2xl shadow-slate-950/40 md:p-10">
-          <div className="mb-10 flex items-center gap-3">
+    <div className="login-container">
+      <div className={`video-background login-stage login-stage--${theme.heroPattern}`} />
+      <div className="login-overlay" />
+
+      <div className="container relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-6 px-4 py-8 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+        <section className="login-form w-full max-w-none p-8 text-white md:p-10">
+          <div className="mb-10 flex items-center gap-4">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/30">
-              <span className="material-symbols-outlined text-3xl">bolt</span>
+              <span className="text-2xl font-black tracking-[0.22em] text-slate-950">G</span>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Nexus</p>
-              <h1 className="text-2xl font-black tracking-tight">Operations Cloud</h1>
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">Gambit</p>
+              <h1 className="text-2xl font-black tracking-tight">Gambit LLC</h1>
             </div>
           </div>
 
           <div className="max-w-xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-primary/90">
-              Multi-area workspace
+              SaaS commerce operating system
             </p>
             <h2 className="mt-4 text-4xl font-black tracking-tight md:text-5xl">
-              One product, strict access by role.
+              {theme.loginTitle}
             </h2>
             <p className="mt-5 max-w-lg text-base leading-7 text-slate-300">
-              POS users are restricted to the floor and checkout workflow. ERP users stay
-              inside inventory, sales, and reporting. Administration users manage the
-              business layer only. Owners can cross all three.
+              {theme.loginMessage}
             </p>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <div className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+              Tenant: {theme.brandName}
+            </div>
+            <div className="inline-flex rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+              {theme.brandTagline}
+            </div>
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2">
@@ -85,17 +97,18 @@ export default function LoginPage() {
           </div>
         </section>
 
-        <section className="rounded-[32px] border border-white/10 bg-slate-50 p-8 shadow-2xl shadow-slate-950/40 md:p-10">
+        <section className="rounded-[32px] border border-white/10 bg-slate-50/95 p-8 shadow-2xl shadow-slate-950/40 backdrop-blur-xl md:p-10">
           <div className="mb-8">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
               Sign in
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900">
-              Access your workspace
+              Access your Gambit workspace
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-500">
               Use one of the seeded demo accounts or your assigned Supabase email and
-              password.
+              password. Owners can reach the tenant SaaS studio in addition to ERP, admin,
+              and POS.
             </p>
           </div>
 
@@ -144,6 +157,10 @@ export default function LoginPage() {
               Default password
             </p>
             <p className="mt-2 text-lg font-bold text-slate-900">Passw0rd!</p>
+            <p className="mt-3 text-sm leading-6 text-slate-500">
+              Guarded routing is enforced after sign-in. POS users stay in POS, ERP users
+              stay in ERP, admins stay in administration, and owners get the SaaS studio.
+            </p>
           </div>
         </section>
       </div>

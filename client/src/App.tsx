@@ -20,12 +20,13 @@ import ErpReportsPage from './pages/ErpReportsPage';
 import AdminBranchesPage from './pages/AdminBranchesPage';
 import AdminBankAccountsPage from './pages/AdminBankAccountsPage';
 import AdminSettingsPage from './pages/AdminSettingsPage';
+import OwnerStudioPage from './pages/OwnerStudioPage';
 
 function FullScreenLoader() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-950 text-slate-200">
       <div className="glass-panel rounded-3xl border border-white/10 px-8 py-6 text-sm font-semibold tracking-[0.2em] uppercase text-slate-400">
-        Loading workspace
+        Loading Gambit
       </div>
     </div>
   );
@@ -65,6 +66,9 @@ function ManagementShell() {
   const location = useLocation();
 
   const navItems = [
+    canAccess('owner')
+      ? { to: '/owner/studio', label: 'SaaS Studio', icon: 'palette' }
+      : null,
     canAccess('erp')
       ? { to: '/erp/dashboard', label: 'Dashboard', icon: 'dashboard' }
       : null,
@@ -93,17 +97,19 @@ function ManagementShell() {
       <aside className="glass-panel border-r border-white/10 px-6 py-8">
         <div className="mb-10 flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/30">
-            <span className="material-symbols-outlined text-2xl">bolt</span>
+            <span className="text-xl font-black tracking-[0.24em] text-slate-950">G</span>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Nexus</p>
-            <h1 className="text-xl font-black tracking-tight">Business Cloud</h1>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Gambit</p>
+            <h1 className="text-xl font-black tracking-tight">Gambit LLC</h1>
           </div>
         </div>
 
         <div className="mb-8 rounded-3xl border border-white/10 bg-white/5 p-4">
           <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Workspace</p>
-          <h2 className="mt-2 text-lg font-bold">{user?.workspace.name}</h2>
+          <h2 className="mt-2 text-lg font-bold">
+            {user?.workspace.branding.brandName ?? user?.workspace.name}
+          </h2>
           <p className="text-sm text-slate-400">{user?.fullName}</p>
           <p className="mt-3 inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">
             {user?.role}
@@ -153,14 +159,18 @@ function ManagementShell() {
           <header className="flex flex-col gap-4 border-b border-white/10 px-6 py-5 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.28em] text-slate-500">
-                {location.pathname.startsWith('/erp')
-                  ? 'ERP workspace'
-                  : 'Administration workspace'}
+                {location.pathname.startsWith('/owner')
+                  ? 'Owner SaaS'
+                  : location.pathname.startsWith('/erp')
+                    ? 'ERP workspace'
+                    : 'Administration workspace'}
               </p>
               <h2 className="mt-1 text-2xl font-black tracking-tight">
-                {location.pathname.startsWith('/erp')
-                  ? 'Operations cockpit'
-                  : 'Control center'}
+                {location.pathname.startsWith('/owner')
+                  ? 'Tenant studio'
+                  : location.pathname.startsWith('/erp')
+                    ? 'Operations cockpit'
+                    : 'Control center'}
               </h2>
             </div>
             <div className="flex items-center gap-3">
@@ -169,7 +179,9 @@ function ManagementShell() {
                   Branch
                 </p>
                 <p className="font-semibold text-slate-200">
-                  {user?.branch?.name ?? 'Cross-branch'}
+                  {location.pathname.startsWith('/owner')
+                    ? user?.workspace.slug
+                    : user?.branch?.name ?? 'Cross-branch'}
                 </p>
               </div>
             </div>
@@ -192,6 +204,10 @@ function App() {
           <Route path="/" element={<HomeRedirect />} />
 
           <Route element={<ManagementShell />}>
+            <Route element={<AreaRoute area="owner" />}>
+              <Route path="/owner/studio" element={<OwnerStudioPage />} />
+            </Route>
+
             <Route element={<AreaRoute area="erp" />}>
               <Route path="/erp/dashboard" element={<ErpDashboardPage />} />
               <Route path="/erp/products" element={<ErpProductsPage />} />

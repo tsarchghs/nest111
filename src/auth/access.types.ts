@@ -2,12 +2,27 @@ import type { Request } from 'express';
 
 export type AppRole = 'owner' | 'erp' | 'admin' | 'pos';
 
-export type AppArea = 'erp' | 'admin' | 'pos';
+export type AppArea = 'owner' | 'erp' | 'admin' | 'pos';
+
+export interface WorkspaceBranding {
+  brandName: string;
+  brandTagline: string;
+  primaryColor: string;
+  accentColor: string;
+  surfaceColor: string;
+  loginTitle: string;
+  loginMessage: string;
+  heroPattern: string;
+}
 
 export interface AuthWorkspace {
   id: string;
   name: string;
   slug: string;
+  industry: string;
+  currencyCode: string;
+  timezone: string;
+  branding: WorkspaceBranding;
 }
 
 export interface AuthBranch {
@@ -31,7 +46,7 @@ export interface AuthenticatedRequest extends Request {
 }
 
 export const ROLE_AREA_MAP: Record<AppRole, AppArea[]> = {
-  owner: ['erp', 'admin', 'pos'],
+  owner: ['owner', 'erp', 'admin', 'pos'],
   erp: ['erp'],
   admin: ['admin'],
   pos: ['pos'],

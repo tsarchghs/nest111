@@ -1,8 +1,19 @@
-const API_BASE = "https://nest111-seven.vercel.app/api"
-const SESSION_KEY = 'nexus-platform-session';
+const API_BASE = import.meta.env.VITE_API_BASE ?? '/api';
+const SESSION_KEY = 'gambit-platform-session';
 
-export type AppArea = 'erp' | 'admin' | 'pos';
+export type AppArea = 'owner' | 'erp' | 'admin' | 'pos';
 export type AppRole = 'owner' | 'erp' | 'admin' | 'pos';
+
+export interface WorkspaceBranding {
+  brandName: string;
+  brandTagline: string;
+  primaryColor: string;
+  accentColor: string;
+  surfaceColor: string;
+  loginTitle: string;
+  loginMessage: string;
+  heroPattern: string;
+}
 
 export interface AuthUser {
   userId: string;
@@ -14,6 +25,10 @@ export interface AuthUser {
     id: string;
     name: string;
     slug: string;
+    industry: string;
+    currencyCode: string;
+    timezone: string;
+    branding: WorkspaceBranding;
   };
   branch: {
     id: string;
@@ -139,6 +154,16 @@ export interface BusinessSettings {
   pos_service_charge: number;
   address: string;
   locale: string;
+}
+
+export interface OwnerStudioResponse {
+  workspace: AuthUser['workspace'];
+  business: Pick<BusinessSettings, 'legal_name' | 'trading_name' | 'email'>;
+  stats: {
+    branches: number;
+    bankAccounts: number;
+    activeMembers: number;
+  };
 }
 
 export interface PosTable {
@@ -345,6 +370,24 @@ export const api = {
 
   updateBusinessSettings(payload: Partial<BusinessSettings>) {
     return request<BusinessSettings>('/platform/admin/settings', {
+      method: 'PUT',
+      body: JSON.stringify(payload),
+    });
+  },
+
+  getOwnerStudio() {
+    return request<OwnerStudioResponse>('/platform/owner/studio');
+  },
+
+  updateOwnerStudio(payload: {
+    name?: string;
+    slug?: string;
+    industry?: string;
+    currencyCode?: string;
+    timezone?: string;
+    branding?: Partial<WorkspaceBranding>;
+  }) {
+    return request<OwnerStudioResponse>('/platform/owner/studio', {
       method: 'PUT',
       body: JSON.stringify(payload),
     });

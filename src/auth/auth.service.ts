@@ -25,6 +25,23 @@ interface MembershipRow {
   branch_id: string | null;
 }
 
+interface WorkspaceRow {
+  id: string;
+  name: string;
+  slug: string;
+  industry: string;
+  currency_code: string;
+  timezone: string;
+  brand_name: string;
+  brand_tagline: string;
+  primary_color: string;
+  accent_color: string;
+  surface_color: string;
+  login_title: string;
+  login_message: string;
+  hero_pattern: string;
+}
+
 @Injectable()
 export class AuthService {
   constructor(private readonly supabaseService: SupabaseService) {}
@@ -106,15 +123,34 @@ export class AuthService {
     const { data, error } = await this.supabaseService
       .getAdminClient()
       .from('workspaces')
-      .select('id, name, slug')
+      .select(
+        'id, name, slug, industry, currency_code, timezone, brand_name, brand_tagline, primary_color, accent_color, surface_color, login_title, login_message, hero_pattern',
+      )
       .eq('id', workspaceId)
-      .maybeSingle<AuthWorkspace>();
+      .maybeSingle<WorkspaceRow>();
 
     if (error || !data) {
       throw new ForbiddenException('Workspace not found');
     }
 
-    return data;
+    return {
+      id: data.id,
+      name: data.name,
+      slug: data.slug,
+      industry: data.industry,
+      currencyCode: data.currency_code,
+      timezone: data.timezone,
+      branding: {
+        brandName: data.brand_name,
+        brandTagline: data.brand_tagline,
+        primaryColor: data.primary_color,
+        accentColor: data.accent_color,
+        surfaceColor: data.surface_color,
+        loginTitle: data.login_title,
+        loginMessage: data.login_message,
+        heroPattern: data.hero_pattern,
+      },
+    };
   }
 
   private async getBranch(branchId: string): Promise<AuthBranch> {

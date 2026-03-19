@@ -33,6 +33,24 @@ type InvoicePayload = {
   items: InvoiceItemPayload[];
 };
 
+type OwnerStudioPayload = {
+  name?: string;
+  slug?: string;
+  industry?: string;
+  currencyCode?: string;
+  timezone?: string;
+  branding?: {
+    brandName?: string;
+    brandTagline?: string;
+    primaryColor?: string;
+    accentColor?: string;
+    surfaceColor?: string;
+    loginTitle?: string;
+    loginMessage?: string;
+    heroPattern?: string;
+  };
+};
+
 @Injectable()
 export class PlatformService {
   constructor(private readonly supabaseService: SupabaseService) {}
@@ -329,6 +347,81 @@ export class PlatformService {
     }
 
     return data;
+  }
+
+  async getOwnerStudio(user: AuthSessionUser) {
+    const [workspace, business, branches, bankAccounts, membershipCount] =
+      await Promise.all([
+        this.fetchWorkspaceStudio(user.workspace.id),
+        this.fetchBusinessSettings(user.workspace.id),
+        this.fetchBranches(user.workspace.id),
+        this.fetchBankAccountIds(user.workspace.id),
+        this.countMemberships(user.workspace.id),
+      ]);
+
+    return {
+      workspace,
+      business,
+      stats: {
+        branches: branches.length,
+        bankAccounts: bankAccounts.length,
+        activeMembers: membershipCount,
+      },
+    };
+  }
+
+  async updateOwnerStudio(user: AuthSessionUser, payload: Record<string, unknown>) {
+    const source = payload as OwnerStudioPayload;
+    const current = await this.fetchWorkspaceStudio(user.workspace.id);
+
+    const workspaceUpdate = {
+      name: this.safeText(source.name, current.name),
+      slug: this.safeSlug(source.slug, current.slug),
+      industry: this.safeText(source.industry, current.industry),
+      currency_code: this.safeText(source.currencyCode, current.currencyCode),
+      timezone: this.safeText(source.timezone, current.timezone),
+      brand_name: this.safeText(source.branding?.brandName, current.branding.brandName),
+      brand_tagline: this.safeText(
+        source.branding?.brandTagline,
+        current.branding.brandTagline,
+      ),
+      primary_color: this.safeColor(
+        source.branding?.primaryColor,
+        current.branding.primaryColor,
+      ),
+      accent_color: this.safeColor(
+        source.branding?.accentColor,
+        current.branding.accentColor,
+      ),
+      surface_color: this.safeColor(
+        source.branding?.surfaceColor,
+        current.branding.surfaceColor,
+      ),
+      login_title: this.safeText(
+        source.branding?.loginTitle,
+        current.branding.loginTitle,
+      ),
+      login_message: this.safeText(
+        source.branding?.loginMessage,
+        current.branding.loginMessage,
+      ),
+      hero_pattern: this.safePattern(
+        source.branding?.heroPattern,
+        current.branding.heroPattern,
+      ),
+      updated_at: new Date().toISOString(),
+    };
+
+    const { error } = await this.admin
+      .from('workspaces')
+      .update(workspaceUpdate)
+      .eq('id', user.workspace.id);
+
+    if (error) {
+      throw new Error(`Failed to update workspace studio: ${error.message}`);
+    }
+
+    return this.getOwnerStudio(user);
   }
 
   async getPosFloor(user: AuthSessionUser) {
@@ -638,6 +731,66 @@ export class PlatformService {
     return data;
   }
 
+  private async fetchWorkspaceStudio(workspaceId: string) {
+    const { data, error } = await this.admin
+      .from('workspaces')
+      .select(
+        'id, name, slug, industry, currency_code, timezone, brand_name, brand_tagline, primary_color, accent_color, surface_color, login_title, login_message, hero_pattern',
+      )
+      .eq('id', workspaceId)
+      .maybeSingle();
+
+    if (error || !data) {
+      throw new Error(`Failed to fetch workspace studio: ${error?.message ?? 'not found'}`);
+    }
+
+    return {
+      id: data.id,
+      name: data.name,
+      slug: data.slug,
+      industry: data.industry,
+      currencyCode: data.currency_code,
+      timezone: data.timezone,
+      branding: {
+        brandName: data.brand_name,
+        brandTagline: data.brand_tagline,
+        primaryColor: data.primary_color,
+        accentColor: data.accent_color,
+        surfaceColor: data.surface_color,
+        loginTitle: data.login_title,
+        loginMessage: data.login_message,
+        heroPattern: data.hero_pattern,
+      },
+    };
+  }
+
+  private async fetchBankAccountIds(workspaceId: string) {
+    const { data, error } = await this.admin
+      .from('bank_accounts')
+      .select('id')
+      .eq('workspace_id', workspaceId);
+
+    if (error) {
+      throw new Error(`Failed to fetch bank accounts: ${error.message}`);
+    }
+
+    return data ?? [];
+  }
+
+  private async countMemberships(workspaceId: string) {
+    const { count, error } = await this.admin
+      .from('workspace_memberships')
+      .select('*', { count: 'exact', head: true })
+      .eq('workspace_id', workspaceId)
+      .eq('active', true);
+
+    if (error) {
+      throw new Error(`Failed to count workspace members: ${error.message}`);
+    }
+
+    return count ?? 0;
+  }
+
   private async fetchOpenOrders(workspaceId: string) {
     const { data, error } = await this.admin
       .from('orders')
@@ -770,5 +923,46 @@ export class PlatformService {
     ]);
 
     return { order, orderItems };
+  }
+
+  private safeText(value: unknown, fallback: string) {
+    if (typeof value !== 'string') {
+      return fallback;
+    }
+
+    const next = value.trim();
+    return next.length > 0 ? next : fallback;
+  }
+
+  private safeColor(value: unknown, fallback: string) {
+    if (typeof value !== 'string') {
+      return fallback;
+    }
+
+    const next = value.trim();
+    return /^#[0-9a-fA-F]{6}$/.test(next) ? next : fallback;
+  }
+
+  private safeSlug(value: unknown, fallback: string) {
+    if (typeof value !== 'string') {
+      return fallback;
+    }
+
+    const next = value
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    return next.length > 0 ? next : fallback;
+  }
+
+  private safePattern(value: unknown, fallback: string) {
+    if (typeof value !== 'string') {
+      return fallback;
+    }
+
+    const allowed = new Set(['nordic', 'aurora', 'grid', 'monolith']);
+    return allowed.has(value) ? value : fallback;
   }
 }
