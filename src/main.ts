@@ -19,7 +19,7 @@ async function bootstrap() {
       return next();
     }
 
-    return res.sendFile(join(process.cwd(), 'src', 'published', 'index.html')); // dont change
+    return res.sendFile(join(process.cwd(), 'client', 'dist', 'index.html'));
   });
 
   await app.listen(Number(process.env.PORT) || 3000);
