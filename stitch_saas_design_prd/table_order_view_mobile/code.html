@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS Table #12 - Mobile View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for category tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Mobile Cart Drawer Toggle logic via CSS (simulated) */
+        #cart-drawer:target {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/50 backdrop-blur-md z-10">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">table_restaurant</span>
+</div>
+<div>
+<h1 class="text-base font-bold leading-none">Table #12</h1>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">3 Guests</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold ml-1">AJ</div>
+</div>
+</header>
+<main class="flex flex-1 flex-col overflow-hidden relative">
+<!-- LEFT: Product Selection -->
+<section class="flex-1 flex flex-col bg-slate-50/50 dark:bg-background-dark/30">
+<!-- Categories Tabs (Scrollable) -->
+<div class="p-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark">
+<div class="flex gap-2 overflow-x-auto no-scrollbar">
+<button class="px-5 py-2 rounded-lg bg-primary text-white font-semibold text-xs whitespace-nowrap shadow-md shadow-primary/20 transition-all">
+                    Coffee
+                </button>
+<button class="px-5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs whitespace-nowrap">
+                    Tea
+                </button>
+<button class="px-5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs whitespace-nowrap">
+                    Pastries
+                </button>
+<button class="px-5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs whitespace-nowrap">
+                    Breakfast
+                </button>
+<button class="px-5 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-xs whitespace-nowrap">
+                    Lunch
+                </button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="flex-1 overflow-y-auto p-3">
+<div class="grid grid-cols-2 gap-3">
+<!-- Product Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="h-28 bg-slate-200 dark:bg-slate-800 relative">
+<img class="w-full h-full object-cover" data-alt="Close up of a hot espresso cup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOrgdmwf63Zmzpv9VWOJ_28D5nTPGHL_sKFsKIPwXmYqdiy3gNbhUUHMGf-CHQ_R50hjOhrRyiBprNAY-XX8w-2Q9W1TviXJT9nUPsIYrpQSg0SMusa6NdvLdFDqo-MU-2jiiEkAN8rcizGxEkFpKTtszwOt-A9M0vlbMEdo5_dEfwwNWdqFo1x5oTdHfzvGgYFBoC1bIjvAAj9rxVCaFf3RnXWej75UgTsDVC3qxAE69tvNALq8X4xQIvB07ea1W3HI31rq54SSXg"/>
+</div>
+<div class="p-2.5">
+<h3 class="font-semibold text-xs truncate">Espresso</h3>
+<div class="flex justify-between items-center mt-1.5">
+<span class="text-primary font-bold text-sm">$3.50</span>
+<span class="material-symbols-outlined text-slate-400 text-lg">add_circle</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="h-28 bg-slate-200 dark:bg-slate-800 relative">
+<img class="w-full h-full object-cover" data-alt="Classic cappuccino with latte art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrKTUUDmWF0nNG9hmgXaNZhRFaltoA2lJMeQ2QFQ3ovj9Npfyzm1Eb1qYE5JRYqk_fLv3a9FK4MWFa1AYnvFCi-ZVkVZ1ooBkVxV_OMt_Pmd609SVnz8mNnzLMki4ZJSZKN-1-xQSflCFrIuvHtIDjiXzHDbisJimeC1HM7NXkXyV-1DRgHjffXT_ZW-jcAM1qoX0LPw69Hrz4Hikz0cPeJG8YCyXKG-K9F-Rqzh2qlG5VWBdOEurVM6MtzAtrMy9UXrsv9aDVx-c4"/>
+</div>
+<div class="p-2.5">
+<h3 class="font-semibold text-xs truncate">Cappuccino</h3>
+<div class="flex justify-between items-center mt-1.5">
+<span class="text-primary font-bold text-sm">$4.50</span>
+<span class="material-symbols-outlined text-slate-400 text-lg">add_circle</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 (Selected) -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-primary/50 ring-1 ring-primary relative">
+<div class="absolute top-1 right-1 z-10 bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold shadow-lg">2</div>
+<div class="h-28 bg-slate-200 dark:bg-slate-800 relative">
+<img class="w-full h-full object-cover" data-alt="Caffè latte in a clear glass mug" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQHY2Jao9lSxRqo6fkN9eod7IJNHBJHFCqCJYMsiqss3Xa49ZM0NHoNegPUGF7qwxTU_rQdxfKNlhB8100YkPfy_x9qZQvOf70aJoDTWA8753tyeSk8r96tLX7m08mHdj9I7UY3zKlEE_RpzUQ0ci4PdckJVxaa4EL1mrSxAs2zIlpH0s629OU87yLotWUH3BANyMEG9BG6MxT2Z_owSbrIYefmWLl7U1hMZzcDpqNctW9K2ii8F2ftjJloW-tE4HSeDEDiYKcX2B6"/>
+</div>
+<div class="p-2.5">
+<h3 class="font-semibold text-xs truncate">Caffè Latte</h3>
+<div class="flex justify-between items-center mt-1.5">
+<span class="text-primary font-bold text-sm">$4.75</span>
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="h-28 bg-slate-200 dark:bg-slate-800 relative">
+<img class="w-full h-full object-cover" data-alt="Black americano coffee in a ceramic cup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1OtwhW_NEzNtoVmIbMio-XkfmN6saOWNWtIX_zFpixZrpfyIYCGQkfCc_obKxEuR2ZZIU5KC1OT--BwVN38EqTKNOzNWbF7-9z610QdU8QhS5zl9v_hUyP4yY02s8701w5Kpehg1gtI-YfKD8iID74v2tKsuA7skIOxVdyHjdzJ0nJJRT5KWs1qTLDtoXGOzGSVlzDl8OXDmf6QUYhBlSXuhL5y5vER2TrtTirBCk_XrwDWQJIbGsqf20wr6zsQRbJ2UwJXnEJw9o"/>
+</div>
+<div class="p-2.5">
+<h3 class="font-semibold text-xs truncate">Americano</h3>
+<div class="flex justify-between items-center mt-1.5">
+<span class="text-primary font-bold text-sm">$3.25</span>
+<span class="material-symbols-outlined text-slate-400 text-lg">add_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Cart Bar (Bottom) -->
+<a class="mx-4 mb-4 bg-primary text-white p-4 rounded-xl shadow-2xl flex items-center justify-between transition-transform active:scale-95" href="#cart-drawer">
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-red-500 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-primary">4</span>
+</div>
+<div>
+<span class="text-xs opacity-80 block leading-none">4 items</span>
+<span class="font-bold">View Cart</span>
+</div>
+</div>
+<span class="text-lg font-black">$27.77</span>
+</a>
+</section>
+<!-- Mobile Cart Drawer (Overlay) -->
+<aside class="fixed inset-0 z-50 transform translate-y-full transition-transform duration-300 ease-in-out bg-black/60 backdrop-blur-sm target:translate-y-0" id="cart-drawer">
+<a class="absolute inset-0 cursor-default" href="#"></a> <!-- Backdrop close link -->
+<div class="absolute bottom-0 left-0 right-0 h-[85vh] bg-white dark:bg-slate-900 rounded-t-3xl flex flex-col shadow-2xl overflow-hidden">
+<!-- Drawer Header -->
+<div class="p-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center shrink-0">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-bold">Current Order</h2>
+<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-bold uppercase tracking-wider text-slate-500">Table #12</span>
+</div>
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500" href="#">
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</a>
+</div>
+<!-- Cart Items -->
+<div class="flex-1 overflow-y-auto p-5 space-y-6">
+<!-- Order Item 1 -->
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Latte glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJr4HJpfoxONE-CdJUD9wjl1MiFPTTvwdL-URQ9RoXTkKALL-iqlDNM83TXg40VVMu6e6ebD8KIpmWTJ6JTaCAPjk1MlvXCO-67zX106qPluIj6HALbkgx6Njn5RYB-pOWzjnokzXpTNwDrix319Y0JGOzwsu-SU-dUfD_OvaR3u632EFLADAQ4FwNYABAUxAW-cGknhgNxVGJMhKfJgV2ZCHbRnzsLbqE1OJFP2_Uj0-UjpKyjieZznnHZlxUYHcDYz2bg_GpG0xI"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<span class="font-bold text-sm">Caffè Latte</span>
+<span class="font-black text-sm text-primary">$9.50</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Regular, Oat Milk</p>
+<div class="flex items-center justify-between mt-3">
+<div class="flex items-center gap-4 bg-slate-100 dark:bg-slate-800 rounded-lg px-2 py-1.5">
+<button class="w-7 h-7 flex items-center justify-center rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm">
+<span class="material-symbols-outlined text-base font-bold">remove</span>
+</button>
+<span class="text-sm font-black w-4 text-center">2</span>
+<button class="w-7 h-7 flex items-center justify-center rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm">
+<span class="material-symbols-outlined text-base font-bold">add</span>
+</button>
+</div>
+<button class="text-red-400">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Item 2 -->
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Freshly baked croissant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQKaePNloaCuBsw5BpwGsGu7JjXj2rhBjt61lFqppcEcz1D53CXKf4XjpF0UP8Qu0SVyF8WUl3gOcBnh9fcvYSixm3bzEoJC_DYmdJF1X6p-CYh0ICUfYhPTy-3P8kUYJydKWzBns-qpquvdTgnN_X3klsOwA_Pdd1pr12Bzr2JH_CkRryNwU6_5Ir62TydMAjtvsku2-wOo0BpwNjh2ir3EfKbSb6W0q98pfnjeLIni7mLo2a7sly40fkVc4a54tgmBve7Gn_ZSt0"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<span class="font-bold text-sm">Butter Croissant</span>
+<span class="font-black text-sm text-primary">$3.75</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Heated</p>
+<div class="flex items-center justify-between mt-3">
+<div class="flex items-center gap-4 bg-slate-100 dark:bg-slate-800 rounded-lg px-2 py-1.5">
+<button class="w-7 h-7 flex items-center justify-center rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm">
+<span class="material-symbols-outlined text-base font-bold">remove</span>
+</button>
+<span class="text-sm font-black w-4 text-center">1</span>
+<button class="w-7 h-7 flex items-center justify-center rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm">
+<span class="material-symbols-outlined text-base font-bold">add</span>
+</button>
+</div>
+<button class="text-red-400">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="p-5 bg-slate-50 dark:bg-slate-900/90 border-t border-slate-200 dark:border-slate-800 space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between text-sm text-slate-500">
+<span>Subtotal</span>
+<span>$25.25</span>
+</div>
+<div class="flex justify-between items-end pt-1">
+<span class="text-base font-bold">Total Payable</span>
+<span class="text-3xl font-black text-primary">$27.77</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-sm">
+<span class="material-symbols-outlined text-lg">print</span> Print
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-sm">
+<span class="material-symbols-outlined text-lg">save</span> Save
+                    </button>
+</div>
+<button class="w-full py-4 rounded-xl bg-primary text-white font-black text-lg shadow-xl shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-2xl">payments</span> PAY NOW
+                </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Bottom status bar -->
+<footer class="h-8 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between px-4 text-[9px] uppercase tracking-widest text-slate-400 font-bold shrink-0">
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Online</span>
+<span>#04</span>
+</div>
+<div class="flex items-center gap-3">
+<span>v2.4.12</span>
+<span>12:45 PM</span>
+</div>
+</footer>
+</body></html>

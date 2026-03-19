@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>POS Checkout - Table #12</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full flex-col relative">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-4 py-3 md:px-6 md:py-4">
+<div class="flex items-center gap-3 md:gap-4">
+<div class="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl md:text-2xl">restaurant</span>
+</div>
+<div>
+<h2 class="text-base md:text-lg font-bold leading-none">Table #12</h2>
+<p class="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 md:mt-1">Server: Alex M. • 4 Guests</p>
+</div>
+</div>
+<div class="flex items-center gap-2 md:gap-3">
+<button class="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-xl md:text-2xl">print</span>
+</button>
+<button class="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-xl md:text-2xl">close</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Panel: Bill Summary (Hidden on Mobile usually, but kept for structural fidelity) -->
+<aside class="hidden md:flex w-80 border-r border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 flex-col">
+<div class="p-6 overflow-y-auto flex-1">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4">Order Summary</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-medium">2x Wagyu Burger</p>
+<p class="text-xs text-slate-500">Medium rare, no onions</p>
+</div>
+<p class="font-medium">$48.00</p>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-medium">1x Caesar Salad</p>
+<p class="text-xs text-slate-500">Extra dressing</p>
+</div>
+<p class="font-medium">$14.00</p>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-medium">3x Craft Beer</p>
+<p class="text-xs text-slate-500">IPA Local Selection</p>
+</div>
+<p class="font-medium">$22.00</p>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/50">
+<div class="space-y-2 text-sm">
+<div class="flex justify-between text-slate-500">
+<span>Subtotal</span>
+<span>$84.00</span>
+</div>
+<div class="flex justify-between text-slate-500 border-b border-slate-100 dark:border-slate-800 pb-2">
+<span>Tax/Service</span>
+<span>$12.60</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-lg font-bold">Total Due</span>
+<span class="text-xl font-black text-primary">$96.60</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center Panel: Payment Methods -->
+<section class="flex-1 flex flex-col p-4 md:p-8 bg-white dark:bg-background-dark overflow-y-auto">
+<div class="max-w-xl mx-auto w-full space-y-6 md:space-y-8">
+<div>
+<h2 class="text-xl md:text-2xl font-bold mb-1 md:mb-2">Process Payment</h2>
+<p class="text-sm md:text-base text-slate-500">Select preferred payment method.</p>
+</div>
+<div class="grid grid-cols-1 gap-3 md:gap-4">
+<label class="group relative flex cursor-pointer items-center justify-between rounded-xl border-2 border-primary bg-primary/5 p-4 md:p-6 transition-all">
+<div class="flex items-center gap-3 md:gap-4">
+<div class="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-2xl md:text-3xl">payments</span>
+</div>
+<div>
+<p class="text-base md:text-lg font-bold">Cash</p>
+<p class="text-xs md:text-sm text-slate-500">Physical currency</p>
+</div>
+</div>
+<input checked="" class="h-5 w-5 border-slate-300 text-primary focus:ring-primary" name="payment-method" type="radio"/>
+</label>
+<label class="group relative flex cursor-pointer items-center justify-between rounded-xl border-2 border-slate-200 dark:border-slate-800 p-4 md:p-6 transition-all">
+<div class="flex items-center gap-3 md:gap-4">
+<div class="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-2xl md:text-3xl">credit_card</span>
+</div>
+<div>
+<p class="text-base md:text-lg font-bold">Credit Card</p>
+<p class="text-xs md:text-sm text-slate-500">Visa, Mastercard, Amex</p>
+</div>
+</div>
+<input class="h-5 w-5 border-slate-300 text-primary focus:ring-primary" name="payment-method" type="radio"/>
+</label>
+</div>
+<div class="pt-4 md:pt-6">
+<button class="w-full rounded-xl bg-primary px-8 py-4 md:py-5 text-base md:text-lg font-black text-white shadow-lg shadow-primary/20">
+                        COMPLETE PAYMENT
+                    </button>
+</div>
+</div>
+</section>
+<!-- Right Panel: Keypad (Hidden on Mobile) -->
+<aside class="hidden lg:flex w-96 border-l border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 flex-col p-6">
+<div class="mb-6 space-y-4">
+<div class="rounded-xl bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-xs font-bold text-slate-500 uppercase">Amount Received</p>
+<p class="text-4xl font-black text-primary">$100.00</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3 flex-1">
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">1</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">2</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">3</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">4</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">5</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">6</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">7</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">8</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">9</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">.</button>
+<button class="flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-2xl font-bold border border-slate-200 dark:border-slate-700">0</button>
+<button class="flex items-center justify-center rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">backspace</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- Footer: Hidden on mobile when modal is active, but here for structural fidelity -->
+<footer class="hidden md:flex bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-6 py-3 items-center justify-between gap-4">
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">Split Bill</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">Add Tip</button>
+</div>
+<div class="text-xs text-slate-500">System Version 4.2.0</div>
+</footer>
+<!-- MOBILE FULL-SCREEN MODAL: Split Bill -->
+<div class="fixed inset-0 z-50 flex flex-col bg-white dark:bg-background-dark md:items-center md:justify-center md:bg-slate-950/80 md:backdrop-blur-sm md:p-4">
+<div class="flex-1 bg-white dark:bg-slate-900 w-full md:max-w-5xl md:h-[85vh] md:rounded-2xl shadow-2xl flex flex-col overflow-hidden md:border md:border-slate-200 md:dark:border-slate-800">
+<!-- Modal Header -->
+<div class="flex items-center justify-between px-6 py-4 md:px-8 md:py-6 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-10">
+<h2 class="text-xl md:text-2xl font-black flex items-center gap-2 md:gap-3">
+<span class="material-symbols-outlined text-primary text-2xl md:text-3xl">call_split</span>
+                    Split Bill
+                </h2>
+<button class="h-9 w-9 md:h-10 md:w-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Tabs (Horizontal scroll on mobile) -->
+<div class="px-6 md:px-8 pt-4 md:pt-6 overflow-x-auto">
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl w-full min-w-[400px] md:max-w-2xl">
+<button class="flex-1 py-2.5 md:py-3 text-xs md:text-sm font-bold rounded-lg text-slate-500">Split by Person</button>
+<button class="flex-1 py-2.5 md:py-3 text-xs md:text-sm font-bold rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm ring-1 ring-slate-200 dark:ring-slate-600">Split by Item</button>
+<button class="flex-1 py-2.5 md:py-3 text-xs md:text-sm font-bold rounded-lg text-slate-500">Custom Amount</button>
+</div>
+</div>
+<!-- Modal Content -->
+<div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+<!-- Main Content Area: Item List -->
+<div class="flex-1 p-6 md:p-8 overflow-y-auto">
+<div class="space-y-4 md:space-y-6">
+<div class="flex justify-between items-center mb-2">
+<h3 class="text-base md:text-lg font-bold">Select items</h3>
+<button class="text-sm font-bold text-primary">Select All</button>
+</div>
+<div class="space-y-3">
+<!-- Item 1 (Selected) -->
+<label class="flex items-center justify-between p-4 md:p-6 rounded-xl md:rounded-2xl border-2 border-primary bg-primary/5 cursor-pointer group transition-all">
+<div class="flex items-center gap-3 md:gap-5">
+<div class="h-6 w-6 md:h-8 md:w-8 rounded-lg bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-lg md:text-xl">check_box</span>
+</div>
+<div>
+<p class="text-sm md:text-lg font-bold">2x Wagyu Burger</p>
+<p class="text-[10px] md:text-sm text-slate-500">Medium rare</p>
+</div>
+</div>
+<span class="text-base md:text-xl font-black">$48.00</span>
+<input checked="" class="hidden" type="checkbox"/>
+</label>
+<!-- Item 2 -->
+<label class="flex items-center justify-between p-4 md:p-6 rounded-xl md:rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/50 cursor-pointer group hover:border-slate-200 dark:hover:border-slate-700 transition-all">
+<div class="flex items-center gap-3 md:gap-5">
+<div class="h-6 w-6 md:h-8 md:w-8 rounded-lg border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center"></div>
+<div>
+<p class="text-sm md:text-lg font-bold">1x Caesar Salad</p>
+<p class="text-[10px] md:text-sm text-slate-500">Extra dressing</p>
+</div>
+</div>
+<span class="text-base md:text-xl font-black">$14.00</span>
+<input class="hidden" type="checkbox"/>
+</label>
+<!-- Item 3 -->
+<label class="flex items-center justify-between p-4 md:p-6 rounded-xl md:rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800/50 cursor-pointer group transition-all">
+<div class="flex items-center gap-3 md:gap-5">
+<div class="h-6 w-6 md:h-8 md:w-8 rounded-lg border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center"></div>
+<div>
+<p class="text-sm md:text-lg font-bold">3x Craft Beer</p>
+<p class="text-[10px] md:text-sm text-slate-500">IPA Local</p>
+</div>
+</div>
+<span class="text-base md:text-xl font-black">$22.00</span>
+<input class="hidden" type="checkbox"/>
+</label>
+</div>
+<div class="mt-4 p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-1 md:mb-2">
+<span class="text-xs md:text-sm font-medium text-slate-500">Subtotal</span>
+<span class="text-base md:text-xl font-bold">$48.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs md:text-sm font-medium text-slate-500">Tax/Srvc (Shared)</span>
+<span class="text-sm md:text-lg font-medium">$7.20</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar/Summary Section: Fixed at bottom on mobile, side on desktop -->
+<div class="w-full md:w-96 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 flex flex-col shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.1)] md:shadow-none">
+<h3 class="hidden md:block text-sm font-bold uppercase tracking-widest text-slate-500 mb-6">Split Summary</h3>
+<div class="space-y-4 md:space-y-6 flex-1 overflow-y-auto">
+<div class="md:hidden flex justify-between items-end mb-2">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase">Current Split</p>
+<p class="text-2xl font-black text-primary leading-none">$55.20</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-500 uppercase">Remaining</p>
+<p class="text-base font-bold text-red-500 leading-none">$41.40</p>
+</div>
+</div>
+<div class="hidden md:block">
+<div class="flex justify-between text-sm mb-2">
+<span class="text-slate-500 font-bold uppercase">Split Progress</span>
+<span class="text-primary font-bold">57%</span>
+</div>
+<div class="h-3 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[57%]"></div>
+</div>
+</div>
+<div class="hidden md:block p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+<p class="text-xs font-bold text-slate-500 uppercase mb-1">Current Split Total</p>
+<p class="text-4xl font-black text-primary">$55.20</p>
+</div>
+<div class="hidden md:block space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-medium">Total Bill</span>
+<span class="font-bold">$96.60</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-500 font-medium">Remaining Balance</span>
+<span class="font-bold text-red-500">$41.40</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 md:p-4 rounded-xl bg-primary/5 text-primary text-[10px] md:text-sm border border-primary/10">
+<span class="material-symbols-outlined text-lg md:text-xl">info</span>
+<p>Taxes are auto-calculated per item share.</p>
+</div>
+</div>
+<!-- Footer Actions (Fixed in this container) -->
+<div class="space-y-3 mt-4 md:mt-8">
+<button class="w-full py-4 md:py-5 rounded-xl md:rounded-2xl bg-primary text-white text-base md:text-lg font-black shadow-xl shadow-primary/30 active:scale-[0.98] transition-all">
+                            CONFIRM PAYMENT
+                        </button>
+<button class="w-full py-2 md:py-4 rounded-xl text-slate-500 font-bold text-sm md:text-base hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                            Cancel
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

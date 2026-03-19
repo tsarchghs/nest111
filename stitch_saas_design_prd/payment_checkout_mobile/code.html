@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>POS Checkout - Table #12</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-4 py-4 shrink-0">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<h2 class="text-base font-bold leading-none">Table #12</h2>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-tight">Server: Alex M. • 4 Guests</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-xl">print</span>
+</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto bg-slate-50 dark:bg-background-dark">
+<div class="flex flex-col w-full pb-32">
+<!-- Order Summary Collapsible Section -->
+<section class="bg-white dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
+<div class="p-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Order Summary</h3>
+<button class="text-xs text-primary font-medium">View Full Check</button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium">2x Wagyu Burger</p>
+<p class="text-[11px] text-slate-500">Medium rare, no onions</p>
+</div>
+<p class="text-sm font-medium">$48.00</p>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium">1x Caesar Salad</p>
+<p class="text-[11px] text-slate-500">Extra dressing</p>
+</div>
+<p class="text-sm font-medium">$14.00</p>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium">3x Craft Beer</p>
+<p class="text-[11px] text-slate-500">IPA Local Selection</p>
+</div>
+<p class="text-sm font-medium">$22.00</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50/50 dark:bg-slate-800/20 border-t border-slate-100 dark:border-slate-800">
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold">Total Due</span>
+<span class="text-lg font-black text-primary">$96.60</span>
+</div>
+</div>
+</section>
+<!-- Payment Method Selection -->
+<section class="p-4 space-y-4">
+<h2 class="text-lg font-bold">Select Payment</h2>
+<div class="grid grid-cols-1 gap-3">
+<label class="group relative flex cursor-pointer items-center justify-between rounded-xl border-2 border-slate-200 dark:border-slate-800 p-4 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-has-[:checked]:bg-primary group-has-[:checked]:text-white">
+<span class="material-symbols-outlined text-2xl">payments</span>
+</div>
+<div>
+<p class="text-sm font-bold leading-tight">Cash</p>
+<p class="text-[11px] text-slate-500">Physical currency</p>
+</div>
+</div>
+<input checked="" class="h-5 w-5 border-slate-300 text-primary focus:ring-primary" name="payment-method" type="radio"/>
+</label>
+<label class="group relative flex cursor-pointer items-center justify-between rounded-xl border-2 border-slate-200 dark:border-slate-800 p-4 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-has-[:checked]:bg-primary group-has-[:checked]:text-white">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+</div>
+<div>
+<p class="text-sm font-bold leading-tight">Credit / Debit Card</p>
+<p class="text-[11px] text-slate-500">Visa, Mastercard, Amex</p>
+</div>
+</div>
+<input class="h-5 w-5 border-slate-300 text-primary focus:ring-primary" name="payment-method" type="radio"/>
+</label>
+<label class="group relative flex cursor-pointer items-center justify-between rounded-xl border-2 border-slate-200 dark:border-slate-800 p-4 transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-has-[:checked]:bg-primary group-has-[:checked]:text-white">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-sm font-bold leading-tight">Digital Wallet</p>
+<p class="text-[11px] text-slate-500">Apple Pay, Google Pay, QR</p>
+</div>
+</div>
+<input class="h-5 w-5 border-slate-300 text-primary focus:ring-primary" name="payment-method" type="radio"/>
+</label>
+</div>
+</section>
+<!-- Keypad and Action Area -->
+<section class="p-4 bg-slate-100/50 dark:bg-slate-900/50">
+<div class="mb-4 space-y-3">
+<div class="rounded-xl bg-white dark:bg-slate-800 p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-[10px] font-bold text-slate-500 uppercase">Amount Received</p>
+<p class="text-3xl font-black text-primary">$100.00</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="rounded-xl bg-white dark:bg-slate-800 p-3 border border-slate-200 dark:border-slate-700">
+<p class="text-[10px] font-bold text-slate-500 uppercase">Total Due</p>
+<p class="text-base font-bold">$96.60</p>
+</div>
+<div class="rounded-xl bg-green-500/10 dark:bg-green-500/20 p-3 border border-green-500/30">
+<p class="text-[10px] font-bold text-green-600 dark:text-green-400 uppercase">Change Due</p>
+<p class="text-base font-bold text-green-600 dark:text-green-400">$3.40</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-6">
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">1</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">2</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">3</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">4</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">5</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">6</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">7</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">8</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">9</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">.</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 text-xl font-bold shadow-sm border border-slate-200 dark:border-slate-700 active:bg-slate-100">0</button>
+<button class="h-16 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 shadow-sm active:bg-slate-300">
+<span class="material-symbols-outlined">backspace</span>
+</button>
+<button class="col-span-3 mt-2 flex items-center justify-center rounded-xl bg-primary/10 text-primary font-bold py-4 border border-primary/20">
+                            Exact Amount ($96.60)
+                        </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Fixed Bottom Actions Area -->
+<div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-4 pt-4 pb-safe-offset-4 z-10">
+<div class="grid grid-cols-3 gap-2 mb-4">
+<button class="py-2.5 rounded-lg text-[11px] font-bold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 uppercase tracking-tighter">Split</button>
+<button class="py-2.5 rounded-lg text-[11px] font-bold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 uppercase tracking-tighter">Tip</button>
+<button class="py-2.5 rounded-lg text-[11px] font-bold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 uppercase tracking-tighter">Disc.</button>
+</div>
+<button class="w-full rounded-xl bg-primary px-4 py-5 text-lg font-black text-white shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all uppercase tracking-wide">
+                COMPLETE PAYMENT
+            </button>
+</div>
+</div>
+<style>
+        /* Handle iOS safe area for bottom padding */
+        .pb-safe-offset-4 {
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+        }
+    </style>
+</body></html>

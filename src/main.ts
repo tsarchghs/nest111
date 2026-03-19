@@ -1,32 +1,28 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { join } from 'path';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors();
-
-  // ✅ strongly recommended
   app.setGlobalPrefix('api');
 
   const server = app.getHttpAdapter().getInstance();
 
   server.get(/.*/, (req, res, next) => {
-    // 🚫 NEVER touch API
     if (req.path.startsWith('/api')) {
       return next();
     }
 
-    // 🚫 skip static assets
     if (req.path.includes('.') || req.path.startsWith('/assets')) {
       return next();
     }
 
-    // ✅ everything else = frontend
-    return res.sendFile(join(__dirname, '.', 'published', 'index.html'));
+    return res.sendFile(join(process.cwd(), 'client', 'dist', 'index.html'));
   });
 
-  await app.listen(3000);
+  await app.listen(Number(process.env.PORT) || 3000);
 }
+
 bootstrap();

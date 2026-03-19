@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ERP Cloud - Sales Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-tight text-slate-900 dark:text-white">ERP-lite</h1>
+<p class="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Business Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                    Products
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">category</span>
+                    Categories
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+                    Sales
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined text-[20px] fill-1">bar_chart</span>
+                    Reports
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">store</span>
+                    Branches
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                    Bank Accounts
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                    Settings
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+<!-- Header -->
+<header class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-semibold">Reports</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none w-64" placeholder="Search reports..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-800"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu6hJCD47X3plNyI8OMb6PQjw6cqJDkuf4vjYfdVGGeBGI_mAJDjSlMhREHtWjXsRmoLlckbAcu-8vybbRRRtbg4DJ0LIMSMLHRECu1eVG9lBpjg5rt2L_HOBMBKyMFNz0Wlz8vsPQw9vDQI_7DZLWeB7gVwMzZPdcF0P-Uune-Wco-3djgC9d93DZEfnZujG2Hq3VY8Kv5L2uZYEdtXJs3F1h5D5uyvj1XexLl4lIW1cJqD3baTWSt3NcTG5X7wpd7jZES1qBJsh4"/>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto">
+<!-- Title & Filter Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Sales Analytics</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Analyze your revenue trends and sales performance across different timeframes.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                            This Month
+                            <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg text-slate-600 dark:text-slate-400">download</span>
+</button>
+</div>
+</div>
+<!-- Empty State Card -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-16 flex flex-col items-center justify-center text-center shadow-sm">
+<div class="w-full max-w-sm mb-8 relative">
+<div class="absolute -top-10 -left-10 size-32 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -right-10 size-40 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="relative bg-slate-50 dark:bg-slate-800/50 aspect-video rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100 dark:border-slate-800 shadow-inner">
+<img alt="Data illustration" class="w-full h-full object-cover opacity-60 dark:opacity-30 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh0vjuo3WZwJzY42fDWwkRFHHIWCue5b9_5Tos7r3DukghlZ38vaVJQWw4cQ4inSj-pLXPrjEMnBoWkYh9w_kygXaP7nzFkAXqAJp1kBAgeURUYHOzmMBqiIs1qaP1edYrZzYHvXF2bmgATUctIX2eY80hJRgyqoTbIsOzDxN7Arrd_Teg4bzWNclcTGPG5lka9i1icAmLRHhf0STjqDqW1r2smgraoYpjhJCnn8zKz8HATxlxJuvOr3Z_kYwYfhAardS82Jiu4sXS"/>
+<div class="absolute flex flex-col items-center justify-center gap-4">
+<div class="size-20 bg-primary rounded-full flex items-center justify-center border-8 border-white dark:border-slate-900 shadow-2xl">
+<span class="material-symbols-outlined text-white text-4xl">query_stats</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-md space-y-4">
+<h3 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">No data available for the selected period</h3>
+<p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
+                            We couldn't find any sales records for the dates you've selected. Try adjusting your filters or start recording new transactions to see insights.
+                        </p>
+</div>
+<div class="mt-10 flex flex-col sm:flex-row gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-xl font-bold flex items-center gap-2 transition-all hover:scale-[1.02] shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined">add_circle</span>
+                            Start generating sales
+                        </button>
+<button class="px-8 py-3.5 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl font-bold transition-colors">
+                            View help center
+                        </button>
+</div>
+<div class="mt-16 flex items-center gap-12 py-6 border-t border-slate-100 dark:border-slate-800 w-full max-w-xl justify-center">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span class="text-[10px] uppercase tracking-[0.15em] font-bold">Automatic Sync: Enabled</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[10px] uppercase tracking-[0.15em] font-bold">Last check: 2m ago</span>
+</div>
+</div>
+</div>
+<!-- Footer Tips -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 bg-primary/5 rounded-2xl border border-primary/10">
+<span class="material-symbols-outlined text-primary mb-3">lightbulb</span>
+<h5 class="font-bold mb-1.5 text-slate-900 dark:text-white">Pro Tip</h5>
+<p class="text-sm text-slate-600 dark:text-slate-400">Connect your bank account to automatically import transaction data into reports.</p>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-slate-400 mb-3">share</span>
+<h5 class="font-bold mb-1.5 text-slate-900 dark:text-white">Collaborate</h5>
+<p class="text-sm text-slate-600 dark:text-slate-400">Invite your team members to add sales records and maintain accurate metrics.</p>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-slate-400 mb-3">tune</span>
+<h5 class="font-bold mb-1.5 text-slate-900 dark:text-white">Filter Range</h5>
+<p class="text-sm text-slate-600 dark:text-slate-400">Try expanding the date range to "Last 12 months" to view historical performance.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

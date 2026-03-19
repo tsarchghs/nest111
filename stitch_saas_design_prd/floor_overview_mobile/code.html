@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Restaurant POS - Floor View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col h-screen overflow-hidden">
+<!-- Top Navigation Bar - Optimized for Mobile -->
+<header class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex-shrink-0">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block text-xl">restaurant_menu</span>
+</div>
+<div>
+<h1 class="text-base font-bold leading-tight tracking-tight">Downtown Cafe</h1>
+<p class="text-[10px] text-slate-500 dark:text-slate-400">Main Floor</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-300 dark:border-slate-700">
+<img alt="Employee Profile" data-alt="Professional headshot of a smiling male employee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtnrUTjwA2ktkAOBE_zFLmtStNPFBdn5ucKTV_sXf-4lacq021MSi0dgPQyiOel-b9rgIN_8uZBhcdJWEF2ySH1y25LaBkeJ6C8SL1GfeE7QNbZE8xOpNz9tXS_2IjTReyTFq613eszUFEiSgLZLvjWcWoG2SJsyH5--AKzbtRNHO-2zQbUHw5whGvVQbBGlsGykyl4-WHu3XKoUffkgZGdYCeSKSEzwTVuwFKL4iakH79vv6aVYNKpP77E2Em85Fkcxf8yZWmZsJE"/>
+</div>
+<button class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-xl block">logout</span>
+</button>
+</div>
+</header>
+<!-- View Selection Tabs - Scrollable on Mobile -->
+<div class="px-4 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 flex-shrink-0 overflow-x-auto no-scrollbar">
+<div class="flex gap-6 whitespace-nowrap">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary py-3 px-1" href="#">
+<span class="text-primary text-xs font-bold">Main Floor</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent py-3 px-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="text-xs font-bold">Patio</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent py-3 px-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="text-xs font-bold">Bar Area</span>
+</a>
+</div>
+</div>
+<!-- Main Floor Grid -->
+<main class="flex-1 overflow-y-auto p-4 bg-background-light dark:bg-background-dark pb-24">
+<!-- Status Legend - Compact for Mobile -->
+<div class="flex flex-wrap gap-4 mb-6 text-[10px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                    Available
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    Occupied
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                    Needs Payment
+                </div>
+</div>
+<!-- Grid of Table Cards - 2 Columns on Mobile -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Table Card: Available (Emerald) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-transparent hover:border-emerald-500 dark:hover:border-emerald-500 shadow-sm transition-all text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">01</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Available</span>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-slate-400 dark:text-slate-500">4 Seats</p>
+<div class="mt-2 h-1 w-full bg-emerald-500 rounded-full"></div>
+</div>
+</button>
+<!-- Table Card: Occupied (Amber) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-amber-500 shadow-lg shadow-amber-500/10 text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">02</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">Occupied</span>
+</div>
+<div class="mb-2">
+<p class="text-base font-bold text-slate-900 dark:text-white">$42.50</p>
+<p class="text-[10px] text-slate-500">3 Guests • 24m</p>
+</div>
+<div class="mt-auto h-1 w-full bg-amber-500 rounded-full"></div>
+</button>
+<!-- Table Card: Needs Payment (Rose) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-rose-500 shadow-lg shadow-rose-500/10 text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">03</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-center">Payment</span>
+</div>
+<div class="mb-2">
+<p class="text-base font-bold text-slate-900 dark:text-white">$128.00</p>
+<p class="text-[10px] text-slate-500">4 Guests • 58m</p>
+</div>
+<div class="mt-auto h-1 w-full bg-rose-500 rounded-full animate-pulse"></div>
+</button>
+<!-- Table Card: Available (Emerald) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-transparent hover:border-emerald-500 dark:hover:border-emerald-500 shadow-sm transition-all text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">04</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Available</span>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-slate-400 dark:text-slate-500">2 Seats</p>
+<div class="mt-2 h-1 w-full bg-emerald-500 rounded-full"></div>
+</div>
+</button>
+<!-- Table Card: Occupied (Amber) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-amber-500 shadow-lg shadow-amber-500/10 text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">05</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">Occupied</span>
+</div>
+<div class="mb-2">
+<p class="text-base font-bold text-slate-900 dark:text-white">$18.25</p>
+<p class="text-[10px] text-slate-500">1 Guest • 12m</p>
+</div>
+<div class="mt-auto h-1 w-full bg-amber-500 rounded-full"></div>
+</button>
+<!-- Table Card: Available (Emerald) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-transparent hover:border-emerald-500 dark:hover:border-emerald-500 shadow-sm transition-all text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">06</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Available</span>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-slate-400 dark:text-slate-500">6 Seats</p>
+<div class="mt-2 h-1 w-full bg-emerald-500 rounded-full"></div>
+</div>
+</button>
+<!-- Table Card: Occupied (Amber) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-amber-500 shadow-lg shadow-amber-500/10 text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">07</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">Occupied</span>
+</div>
+<div class="mb-2">
+<p class="text-base font-bold text-slate-900 dark:text-white">$84.90</p>
+<p class="text-[10px] text-slate-500">2 Guests • 45m</p>
+</div>
+<div class="mt-auto h-1 w-full bg-amber-500 rounded-full"></div>
+</button>
+<!-- Table Card: Available (Emerald) -->
+<button class="group relative flex flex-col p-4 rounded-xl bg-white dark:bg-slate-900 border-2 border-transparent hover:border-emerald-500 dark:hover:border-emerald-500 shadow-sm transition-all text-left min-h-[140px]">
+<div class="flex justify-between items-start mb-2">
+<span class="text-2xl font-black text-slate-900 dark:text-white">08</span>
+<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">Available</span>
+</div>
+<div class="mt-auto">
+<p class="text-xs text-slate-400 dark:text-slate-500">4 Seats</p>
+<div class="mt-2 h-1 w-full bg-emerald-500 rounded-full"></div>
+</div>
+</button>
+</div>
+</main>
+<!-- Floating Action Button for New Order - Centered for Mobile reachability -->
+<div class="fixed bottom-12 left-0 right-0 flex justify-center pointer-events-none">
+<button class="pointer-events-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3.5 rounded-full shadow-2xl shadow-primary/40 transition-transform active:scale-95">
+<span class="material-symbols-outlined font-bold">add</span>
+<span class="text-base font-bold">New Order</span>
+</button>
+</div>
+<!-- Footer / Status Bar - More compact -->
+<footer class="px-4 py-1.5 bg-slate-100 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center flex-shrink-0">
+<div class="flex items-center gap-3 text-[10px] text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">cloud_done</span> Online</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">wifi</span> Kitchen</span>
+</div>
+<div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+                12:45 PM
+            </div>
+</footer>
+</div>
+</body></html>

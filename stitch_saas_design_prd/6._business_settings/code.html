@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>Business Settings</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-6 lg:px-40 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">settings_suggest</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Business Settings</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-6 lg:px-40 py-8">
+<div class="max-w-4xl mx-auto">
+<div class="mb-8">
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-8">
+<a class="flex items-center gap-2 border-b-2 border-primary text-primary pb-4 font-semibold" href="#">
+<span class="material-symbols-outlined text-sm">business</span>
+                                Profile
+                            </a>
+<a class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 pb-4 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">palette</span>
+                                Branding
+                            </a>
+<a class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 pb-4 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+                                Banking
+                            </a>
+</div>
+</div>
+<div class="space-y-12">
+<section id="profile-section">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Business Information</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Update your company details and headquarters address.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Name</span>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-primary focus:ring-primary h-12" placeholder="e.g. Acme Corp" type="text" value="Global Tech Solutions Inc."/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Registration Number</span>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-primary focus:ring-primary h-12" placeholder="ID-000000" type="text" value="99-8234-X12"/>
+</label>
+<label class="flex flex-col gap-2 md:col-span-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Address</span>
+<textarea class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-transparent dark:text-white focus:border-primary focus:ring-primary p-3" placeholder="Street, City, Country" rows="3">123 Innovation Drive, Suite 400
+Silicon Valley, CA 94025
+United States</textarea>
+</label>
+</div>
+</section>
+<section id="branding-section">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Branding</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Manage your company logo and brand theme.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-shrink-0">
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Company Logo</p>
+<div class="relative group">
+<div class="h-32 w-32 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Abstract colorful minimal company logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7WUSLtnrlr5fEsbNMFHYy8Vq1TUjYPot9kEdfG6mL6JsIuZZqqRj7iA3v2fQtwhp-q13wBvbih4F-VnR7oJdJcbX9JTsK6TzWaRR6k8_Tg5YlSqdKk-UeAHWSZ2BCfBmpHf-N05xES85skwBbxm9rdNEXLoc25O3okq2jGyf2KKxFbAfbnXrufgXYz887ufD7wO_I-aLj5EMhu5vvIs_fAqoFOgh-dK0lQ5IlGVY4H36VNOz9nC2DzKE6dwCFDzDjMTtqDlpqDDXP"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white">upload</span>
+</div>
+</div>
+<button class="mt-3 text-xs font-medium text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">edit</span> Change Logo
+                                            </button>
+</div>
+</div>
+<div class="flex-grow space-y-6">
+<div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Theme Colors</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<span class="text-sm text-slate-600 dark:text-slate-400">Primary Color</span>
+<div class="flex items-center gap-2">
+<span class="text-xs font-mono text-slate-500">#257BF4</span>
+<div class="w-8 h-8 rounded-full bg-primary border-2 border-white dark:border-slate-700 shadow-sm cursor-pointer"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<span class="text-sm text-slate-600 dark:text-slate-400">Accent Color</span>
+<div class="flex items-center gap-2">
+<span class="text-xs font-mono text-slate-500">#10B981</span>
+<div class="w-8 h-8 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-700 shadow-sm cursor-pointer"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="banking-section">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Bank Accounts</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Manage your payout destinations.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                                    Add Account
+                                </button>
+</div>
+<div class="overflow-hidden bg-white dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800">
+<table class="min-w-full divide-y divide-slate-200 dark:divide-slate-800">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Bank Name</th>
+<th class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Account Number</th>
+<th class="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-right text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-sm">account_balance</span>
+</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Chase Bank</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 font-mono">**** 4582</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                                    Primary
+                                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex justify-end gap-2">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 text-sm">account_balance</span>
+</div>
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">HSBC Global</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400 font-mono">**** 1120</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-400">
+                                                    Secondary
+                                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex justify-end gap-2">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-4">
+<button class="px-6 py-2.5 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                            Cancel Changes
+                        </button>
+<button class="px-8 py-2.5 rounded-lg text-sm font-bold text-white bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all">
+                            Save All Settings
+                        </button>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-10 px-6 lg:px-40 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-sm text-slate-500 dark:text-slate-400">© 2024 Business Settings Portal. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>

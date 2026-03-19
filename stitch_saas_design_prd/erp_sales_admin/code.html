@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ERP-Lite Sales Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Header / TopNavBar -->
+<header class="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-2xl">rocket_launch</span>
+</div>
+<div class="hidden sm:block">
+<h2 class="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-slate-50">ERP-Lite</h2>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Sales Administration</p>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Dashboard</a>
+<a class="px-3 py-2 text-sm font-semibold rounded-md bg-primary/10 text-primary" href="#">Sales Records</a>
+<a class="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Inventory</a>
+<a class="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Customers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-sm">search</span>
+</span>
+<input class="block w-64 rounded-lg border-slate-200 bg-slate-50 py-2 pl-10 pr-3 text-sm placeholder-slate-400 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500" placeholder="Search sales..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="ml-2 h-8 w-8 overflow-hidden rounded-full bg-slate-200 ring-2 ring-slate-200 dark:ring-slate-800">
+<img alt="User Profile" data-alt="User avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN6GtLR5IMol8PdwgMws1PJbr643aUexDSgbjxQ3VPRT7bXdTBMQ87tJxT8SZ5HHDZTp7ST2u0kfMWiYwFoj7VoQRnXHjqreyBKFGC7lLGbq9zgSMEitwVjTlMvteP8fHmHsyBFDh9nGmE4ddOtZ3VO-j2nod7jhNUbVPJAnZ4GfOsHywNvo9SDvmqkX5q4ot62txHb2W1ATCAV3xXUoXH6MQMVxgYmVd-DeB5z0GUeL-V_oYYZMzWBRIXRhxiB-4N9tWLr62rTPlN"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-8">
+<!-- Page Header & Stats -->
+<div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+<div>
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">Sales History</h1>
+<p class="mt-2 text-slate-600 dark:text-slate-400">Monitor and manage all transactional records across your organization.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">file_download</span>
+                            Export CSV
+                        </button>
+<button class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+<span class="material-symbols-outlined text-lg">add</span>
+                            Create Manual Entry
+                        </button>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-3 overflow-x-auto pb-2 sm:pb-0">
+<button class="flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-white">
+                        All Sales
+                    </button>
+<button class="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700">
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                        Paid
+                    </button>
+<button class="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700">
+<span class="h-2 w-2 rounded-full bg-amber-500"></span>
+                        Pending
+                    </button>
+<button class="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700">
+<span class="h-2 w-2 rounded-full bg-rose-500"></span>
+                        Refunded
+                    </button>
+<div class="h-6 w-px bg-slate-300 dark:bg-slate-700 mx-2"></div>
+<button class="flex items-center gap-2 rounded-lg border border-dashed border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-500 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                        Date Range
+                    </button>
+</div>
+<!-- Main Data Table -->
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Transaction ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Customer</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Date</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Total Amount</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Status</th>
+<th class="px-6 py-4 text-right text-xs font-bold uppercase tracking-wider text-slate-500">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+<td class="whitespace-nowrap px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-slate-200">#INV-94021</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">JD</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Johnathan Doe</span>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-slate-500">Oct 24, 2023</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-slate-900 dark:text-slate-100">$1,420.50</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                            Paid
+                                        </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-sm font-bold text-primary hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+<td class="whitespace-nowrap px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-slate-200">#INV-94022</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 font-bold text-xs">
+<span class="material-symbols-outlined text-sm">person_off</span>
+</div>
+<span class="text-sm italic text-slate-400 dark:text-slate-500">Anonymous Customer</span>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-slate-500">Oct 23, 2023</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-slate-900 dark:text-slate-100">$45.00</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                                            Pending
+                                        </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-sm font-bold text-primary hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+<td class="whitespace-nowrap px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-slate-200">#INV-93988</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">AC</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Acme Corporation</span>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-slate-500">Oct 22, 2023</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-slate-900 dark:text-slate-100">$8,900.00</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-medium text-rose-800 dark:bg-rose-900/30 dark:text-rose-400">
+                                            Refunded
+                                        </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-sm font-bold text-primary hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+<td class="whitespace-nowrap px-6 py-4">
+<span class="text-sm font-bold text-slate-900 dark:text-slate-200">#INV-93850</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">SM</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Sarah Miller</span>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-slate-500">Oct 21, 2023</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm font-semibold text-slate-900 dark:text-slate-100">$215.75</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                            Paid
+                                        </span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">
+<button class="text-sm font-bold text-primary hover:underline">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-slate-200 px-6 py-4 dark:border-slate-800">
+<p class="text-sm text-slate-500 dark:text-slate-400">Showing <span class="font-medium text-slate-900 dark:text-slate-200">1</span> to <span class="font-medium text-slate-900 dark:text-slate-200">4</span> of <span class="font-medium text-slate-900 dark:text-slate-200">84</span> results</p>
+<div class="flex gap-2">
+<button class="inline-flex h-8 w-8 items-center justify-center rounded border border-slate-300 bg-white text-slate-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="inline-flex h-8 w-8 items-center justify-center rounded border border-slate-300 bg-white text-slate-500 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Slide-over / Detail View (Visible state) -->
+<div aria-labelledby="slide-over-title" aria-modal="true" class="fixed inset-0 z-50 overflow-hidden" role="dialog">
+<div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+<div class="fixed inset-y-0 right-0 flex max-w-full pl-10">
+<div class="w-screen max-w-md">
+<div class="flex h-full flex-col overflow-y-scroll bg-white shadow-2xl dark:bg-background-dark">
+<!-- Drawer Header -->
+<div class="bg-slate-50 px-6 py-6 dark:bg-slate-800/50">
+<div class="flex items-start justify-between">
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-50" id="slide-over-title">Transaction Details</h2>
+<div class="ml-3 flex h-7 items-center">
+<button class="rounded-md bg-transparent text-slate-400 hover:text-slate-500 focus:outline-none dark:hover:text-slate-300" type="button">
+<span class="sr-only">Close panel</span>
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-sm font-mono font-bold text-primary">#INV-94021</span>
+<span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-bold text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">PAID</span>
+</div>
+</div>
+<!-- Drawer Content -->
+<div class="relative flex-1 px-6 py-8">
+<div class="space-y-8">
+<!-- Order Summary -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Summary</h3>
+<div class="rounded-xl border border-slate-100 bg-slate-50/50 p-4 dark:border-slate-800 dark:bg-slate-900/30">
+<div class="flex justify-between py-2 text-sm">
+<span class="text-slate-500">Subtotal</span>
+<span class="font-medium text-slate-900 dark:text-slate-200">$1,340.00</span>
+</div>
+<div class="flex justify-between py-2 text-sm border-b border-slate-200 dark:border-slate-800 pb-4">
+<span class="text-slate-500">Tax (6%)</span>
+<span class="font-medium text-slate-900 dark:text-slate-200">$80.50</span>
+</div>
+<div class="flex justify-between pt-4">
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">Total</span>
+<span class="text-base font-extrabold text-primary">$1,420.50</span>
+</div>
+</div>
+</div>
+<!-- Customer Info -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Customer Details</h3>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-200">Johnathan Doe</p>
+<p class="text-xs text-slate-500">john.doe@example.com</p>
+</div>
+</div>
+</div>
+<!-- System Rules (Timestamps) -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">System Information</h3>
+<div class="space-y-3 rounded-xl border border-slate-100 p-4 dark:border-slate-800">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">event_available</span>
+                                                Created At
+                                            </span>
+<span class="font-medium text-slate-700 dark:text-slate-300">Oct 24, 2023 • 14:32 PM</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">history</span>
+                                                Last Updated
+                                            </span>
+<span class="font-medium text-slate-700 dark:text-slate-300">Oct 24, 2023 • 15:10 PM</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">person_pin</span>
+                                                Created By
+                                            </span>
+<span class="font-medium text-slate-700 dark:text-slate-300">Admin User (System)</span>
+</div>
+</div>
+</div>
+<!-- Items Table (Mini) -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Items Purchased</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-800 dark:text-slate-300">Wireless Noise Cancelling Headphones</span>
+<span class="text-xs text-slate-500">SKU: HD-9002 x 2</span>
+</div>
+<span class="text-sm font-bold text-slate-900 dark:text-slate-100">$700.00</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-800 dark:text-slate-300">Professional DSLR Camera</span>
+<span class="text-xs text-slate-500">SKU: CM-4402 x 1</span>
+</div>
+<span class="text-sm font-bold text-slate-900 dark:text-slate-100">$640.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="border-t border-slate-200 p-6 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+<div class="flex gap-3">
+<button class="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">
+                                    Print Invoice
+                                </button>
+<button class="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white hover:bg-primary/90">
+                                    Issue Refund
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

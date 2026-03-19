@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ERP-lite | Business Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-6 md:px-10 py-4 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">corporate_fare</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Business Settings</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        Cancel
+                    </button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">
+                        Save Changes
+                    </button>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8 px-4 md:px-10">
+<div class="layout-content-container flex flex-col max-w-[1024px] flex-1 gap-8">
+<!-- Profile Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+<h3 class="text-xl font-bold">Profile Section</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Logo Upload Card -->
+<div class="lg:col-span-1 p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm">
+<p class="text-sm font-semibold mb-4 text-slate-500 dark:text-slate-400 uppercase tracking-wider">Business Logo</p>
+<div class="flex flex-col items-center gap-4">
+<div class="w-32 h-32 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 relative group overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Corporate logo placeholder with modern abstract icon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHnl3-D1llUgqBQVl4HNQtC-Zvqndr-rdFFGNys6Xg8GoT2BFC7A5ju6XbrdlThxY5K_N6b8L4ZxCU6Es67WjOS2ULGdXx32AYrLpQ7TqO-cTvBbjJW8ILRVAJ4jWh8mv0B_OMP6RqQWdXuU5fkA9zUoCke5mUgYg0IPtKQOa78nluh0-T-EKQzwKTeuO_0Dqf62uxOYoc01tCeF7GCE7WI2hzP_T32166XcCykG1fl-xNLkLa4ILvRTzSMyMC5X6h_tyMEg01wGvc')"></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">cloud_upload</span>
+</div>
+</div>
+<button class="w-full py-2 px-4 rounded-lg bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-colors">
+                                        Upload New Logo
+                                    </button>
+<p class="text-xs text-slate-400 text-center leading-relaxed">Recommended size: 512x512px. PNG or SVG preferred.</p>
+</div>
+</div>
+<!-- Basic Info Card -->
+<div class="lg:col-span-2 p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm space-y-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Name</label>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="text" value="Acme Industries Global Ltd."/>
+</div>
+<div class="space-y-4">
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Branding Primary Color</p>
+<div class="flex flex-wrap gap-4">
+<label class="size-10 cursor-pointer rounded-full border-2 border-transparent ring-2 ring-transparent ring-offset-2 dark:ring-offset-slate-900 has-[:checked]:ring-primary has-[:checked]:border-white dark:has-[:checked]:border-slate-900 transition-all" style="background-color: #2b6cee;">
+<input checked="" class="hidden" name="theme-color" type="radio"/>
+</label>
+<label class="size-10 cursor-pointer rounded-full border-2 border-transparent ring-2 ring-transparent ring-offset-2 dark:ring-offset-slate-900 has-[:checked]:ring-primary has-[:checked]:border-white dark:has-[:checked]:border-slate-900 transition-all" style="background-color: #ef4444;">
+<input class="hidden" name="theme-color" type="radio"/>
+</label>
+<label class="size-10 cursor-pointer rounded-full border-2 border-transparent ring-2 ring-transparent ring-offset-2 dark:ring-offset-slate-900 has-[:checked]:ring-primary has-[:checked]:border-white dark:has-[:checked]:border-slate-900 transition-all" style="background-color: #10b981;">
+<input class="hidden" name="theme-color" type="radio"/>
+</label>
+<label class="size-10 cursor-pointer rounded-full border-2 border-transparent ring-2 ring-transparent ring-offset-2 dark:ring-offset-slate-900 has-[:checked]:ring-primary has-[:checked]:border-white dark:has-[:checked]:border-slate-900 transition-all" style="background-color: #f59e0b;">
+<input class="hidden" name="theme-color" type="radio"/>
+</label>
+<label class="size-10 cursor-pointer rounded-full border-2 border-transparent ring-2 ring-transparent ring-offset-2 dark:ring-offset-slate-900 has-[:checked]:ring-primary has-[:checked]:border-white dark:has-[:checked]:border-slate-900 transition-all" style="background-color: #8b5cf6;">
+<input class="hidden" name="theme-color" type="radio"/>
+</label>
+<button class="size-10 rounded-full border-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+<p class="text-xs text-slate-400">This color will be used for your customer-facing invoices and portal.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">contact_mail</span>
+<h3 class="text-xl font-bold">Contact &amp; Location</h3>
+</div>
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Support Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">alternate_email</span>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent pl-11 pr-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="email" value="support@acme.global"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Business Phone</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">call</span>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent pl-11 pr-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="tel" value="+1 (555) 000-1234"/>
+</div>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Headquarters Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-4 text-slate-400 text-xl">location_on</span>
+<textarea class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent pl-11 pr-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" rows="3">123 Business Way, Tech District
+San Francisco, CA 94103
+United States</textarea>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Financial Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">payments</span>
+<h3 class="text-xl font-bold">Financial Settings</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- VAT Settings -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm space-y-4">
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Tax &amp; VAT</p>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<div>
+<p class="font-medium">Tax Registered</p>
+<p class="text-xs text-slate-500">Enable VAT calculation on invoices</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium">VAT Identification Number</label>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="text" value="US123456789"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium">Default Tax Rate (%)</label>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="number" value="20"/>
+</div>
+</div>
+</div>
+<!-- Bank Accounts -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Bank Accounts</p>
+<button class="text-primary text-xs font-bold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">add</span> Add New
+                                    </button>
+</div>
+<div class="space-y-3">
+<!-- Account 1 -->
+<div class="flex items-center gap-4 p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+<div class="size-10 flex-shrink-0 bg-primary/10 text-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-semibold truncate">Chase Main Operations</p>
+<p class="text-xs text-slate-500 font-mono">**** 4492</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">PRIMARY</span>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+<!-- Account 2 -->
+<div class="flex items-center gap-4 p-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+<div class="size-10 flex-shrink-0 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded flex items-center justify-center">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-semibold truncate">Stripe Payouts USD</p>
+<p class="text-xs text-slate-500 font-mono">**** 8812</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Action Mobile -->
+<div class="md:hidden flex flex-col gap-3 pb-10">
+<button class="w-full py-3 rounded-lg bg-primary text-white font-bold">Save Changes</button>
+<button class="w-full py-3 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-semibold">Cancel</button>
+</div>
+</div>
+</main>
+<!-- Bottom Quick Info (Optional Design Element) -->
+<footer class="border-t border-slate-200 dark:border-slate-800 py-6 px-10 bg-slate-50 dark:bg-slate-900/30">
+<div class="max-w-[1024px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">verified_user</span> System Encrypted</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">history</span> Last edited 2 hours ago by Admin</span>
+</div>
+<p>© 2024 ERP-lite Cloud Solutions. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,114 +1,90 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, Table } from '../api/api';
+import { api, type PosFloorResponse } from '../api/api';
+import { useAuth } from '../auth/AuthContext';
 
 export default function TableSelection() {
   const navigate = useNavigate();
-  const [tables, setTables] = useState<Table[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { logout } = useAuth();
+  const [floor, setFloor] = useState<PosFloorResponse | null>(null);
 
   useEffect(() => {
-    loadTables();
+    api.getPosFloor().then(setFloor).catch(console.error);
   }, []);
 
-  const loadTables = async () => {
-    try {
-      const data = await api.getTables();
-      setTables(data);
-    } catch (error) {
-      console.error('Failed to load tables:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleTableSelect = async (table: Table) => {
-    try {
-      if (table.status === 'available') {
-        await api.updateTable(table.id, { status: 'occupied', current_guests: 2 });
-      }
-      navigate(`/table/${table.id}`);
-    } catch (error) {
-      console.error('Failed to select table:', error);
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'available':
-        return 'bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30';
-      case 'occupied':
-        return 'bg-primary/20 text-primary border-primary/30';
-      case 'reserved':
-        return 'bg-orange-500/20 text-orange-600 dark:text-orange-400 border-orange-500/30';
-      default:
-        return 'bg-slate-500/20 text-slate-600 dark:text-slate-400 border-slate-500/30';
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-xl font-bold text-slate-500">Loading tables...</div>
-      </div>
-    );
+  if (!floor) {
+    return <div className="p-8 text-sm text-slate-300">Loading floor...</div>;
   }
 
   return (
-    <div className="flex flex-col h-screen">
-      <header className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark">
-        <div className="flex items-center gap-3">
-          <div className="bg-primary/20 p-2 rounded-lg text-primary flex items-center justify-center">
-            <span className="material-symbols-outlined text-2xl">restaurant</span>
-          </div>
+    <div className="min-h-screen bg-slate-950 px-4 py-5 text-white">
+      <div className="mx-auto max-w-5xl">
+        <header className="glass-panel mb-6 flex items-center justify-between rounded-[28px] border border-white/10 px-5 py-4">
           <div>
-            <h1 className="text-xl font-bold">POS System</h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Select a table to begin</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-slate-500">
+              POS floor
+            </p>
+            <h1 className="mt-2 text-2xl font-black tracking-tight">
+              {floor.branch?.name ?? 'Floor Overview'}
+            </h1>
           </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-sm font-bold">
-            BS
+          <div className="flex items-center gap-3">
+            <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-right">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Occupancy</p>
+              <p className="font-bold">{floor.occupancyRate}%</p>
+            </div>
+            <button
+              onClick={logout}
+              className="rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-slate-300"
+            >
+              Sign out
+            </button>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main className="flex-1 overflow-y-auto p-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">Available Tables</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {tables.map((table) => (
-              <button
-                key={table.id}
-                onClick={() => handleTableSelect(table)}
-                className="relative bg-white dark:bg-slate-900 rounded-xl p-6 border-2 border-slate-200 dark:border-slate-800 hover:border-primary dark:hover:border-primary transition-all group"
-              >
-                <div className="flex flex-col items-center gap-3">
-                  <span className="material-symbols-outlined text-5xl text-slate-400 group-hover:text-primary transition-colors">
-                    table_restaurant
-                  </span>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold">Table {table.table_number}</div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">
-                      Seats {table.capacity}
-                    </div>
-                  </div>
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-bold border ${getStatusColor(table.status)}`}
-                  >
-                    {table.status.toUpperCase()}
-                  </span>
-                  {table.status === 'occupied' && (
-                    <div className="text-xs text-slate-500">
-                      {table.current_guests} guests
-                    </div>
-                  )}
-                </div>
-              </button>
-            ))}
+        <div className="mb-6 grid gap-4 md:grid-cols-3">
+          <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Tables</p>
+            <p className="mt-3 text-4xl font-black">{floor.tables.length}</p>
+          </div>
+          <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Active orders</p>
+            <p className="mt-3 text-4xl font-black">{floor.activeOrders}</p>
+          </div>
+          <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Zone</p>
+            <p className="mt-3 text-2xl font-black">Main Floor</p>
           </div>
         </div>
-      </main>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {floor.tables.map((table) => (
+            <button
+              key={table.id}
+              onClick={() => navigate(`/pos/table/${table.id}`)}
+              className={`rounded-[28px] border p-5 text-left transition ${
+                table.status === 'occupied'
+                  ? 'border-primary bg-primary/10'
+                  : 'border-white/10 bg-white/5 hover:bg-white/10'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                  {table.zone}
+                </span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
+                  {table.status}
+                </span>
+              </div>
+              <h2 className="mt-6 text-3xl font-black tracking-tight">Table {table.table_number}</h2>
+              <p className="mt-2 text-sm text-slate-400">Seats {table.capacity}</p>
+              <p className="mt-4 text-sm text-slate-300">
+                Guests on floor: {table.current_guests}
+              </p>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

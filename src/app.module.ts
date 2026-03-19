@@ -4,28 +4,21 @@ import { join } from 'path';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { PlatformModule } from './platform/platform.module';
 import { SupabaseModule } from './supabase/supabase.module';
-import { CategoriesModule } from './categories/categories.module';
-import { ProductsModule } from './products/products.module';
-import { TablesModule } from './tables/tables.module';
-import { OrdersModule } from './orders/orders.module';
-import { PaymentsModule } from './payments/payments.module';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'published'),
+      rootPath: join(process.cwd(), 'client', 'dist'),
       serveStaticOptions: {
-        index: false, // 👈 important
+        index: false,
       },
     }),
-
+    AuthModule,
+    PlatformModule,
     SupabaseModule,
-    CategoriesModule,
-    ProductsModule,
-    TablesModule,
-    OrdersModule,
-    PaymentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

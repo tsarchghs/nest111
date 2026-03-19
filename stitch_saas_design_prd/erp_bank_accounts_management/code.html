@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<title>Bank Accounts Management | Acme Corp ERP</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-white dark:bg-background-dark shrink-0">
+<div class="p-6 flex flex-col h-full">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Acme Corp ERP</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Enterprise Plan</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 grow">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">account_balance_wallet</span>
+<span class="text-sm font-medium">Accounts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors mb-4" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<button class="w-full py-2 px-4 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">
+                        Upgrade Now
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 bg-white dark:bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-white placeholder:text-slate-500" placeholder="Search accounts, banks or IBANs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center gap-2 py-2 px-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Link New Account
+                    </button>
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden ml-2">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLgjkqsewZsHup2mxCOdR-QKDpVMaKdFAxi4782CcwTZB554YjL8y-xR8M3kXJs7ypi_eNj5FVwTzwfkBs1L9Hubkag47kmw0PuVnr0rU5RwVwvL9Kirv2FYdkHMUc1ry2JlAd1UkDx8nFReDUN1eOFpk4dc9WRnDDDlPZQZiDWe-Kqa2hoG_GyCInh3MdIvOVQIxHSF9gA0BlxVu1SM9NmO6KNgZx_6sES3Qh9yv0SHKQT8SKBVTiKaud5fmNYBVPpaBUQc5OKO1T"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-6xl mx-auto">
+<!-- Title Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Bank Accounts</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Centralize and manage your global business financial connections.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                                Filters
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-3 mb-6">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm">
+<span class="text-slate-500 dark:text-slate-400">Bank:</span>
+<span class="font-medium text-slate-900 dark:text-white">All Banks</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm">
+<span class="text-slate-500 dark:text-slate-400">Currency:</span>
+<span class="font-medium text-slate-900 dark:text-white">USD, EUR, GBP</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm">
+<span class="text-slate-500 dark:text-slate-400">Status:</span>
+<span class="font-medium text-slate-900 dark:text-white">Active</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</div>
+<button class="text-sm text-primary font-medium px-2 py-1">Clear all</button>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Account Name</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Bank</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">IBAN</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Currency</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Operating Account</span>
+<span class="text-xs text-slate-500">Main liquidity source</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain p-0.5" data-alt="JPMorgan Chase bank logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApr4uJfRDr5mbj4gEvf6h314Hnsr4aH4qTPNKgQWXcl3p3nxUMFQERWHI2WikjL82EGi6g-LW0ZP-a8epb_ZPKU7wvB53iK_whRtKU71Jh5f6PRvuVXox5W8myYXEK48jchm8kzymcMsNT4UXSKq-iidxrJI-eOr3ozZWD-vAoI823sp7UwITGqXEGmeEk0Mk3PHvDn958e1A720aCLvbMQo2g7PihCoAVHtVsriceh0e_TsICfqIl2_pyMPqKHvQe_HaorJuTBvK8"/>
+</div>
+<span class="text-sm text-slate-600 dark:text-slate-300">JPMorgan Chase</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-mono text-slate-500 dark:text-slate-400">US•• •••• 7890</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400">USD</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                                Primary
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Payroll Reserve</span>
+<span class="text-xs text-slate-500">Employee salaries</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain p-0.5" data-alt="Deutsche Bank logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChPGVw53yofk_tNI8Eq5xj7W3kRlXEfnSyG9XNXBd2QCPw387SDU6ZatiGsUdyNK8wgNVWzmkTKXqtQMVvwXfR35uL5FB4VGAI-nmKLiYCFFtGfwfdH3Ip7kX3L-lCK3TWhltn-xg6Y1WoZT5EUukWAgf-ch2sI2Lv35iCZwZePUsHGZIOK6NOepwIoRmryJWNRwWnpRjK7bg_cakTgdHKwuPSmjUSlVPeIurqInIHtDwuSvQAbcVqS9tfVKZuz4FpdavEKCG1t7HW"/>
+</div>
+<span class="text-sm text-slate-600 dark:text-slate-300">Deutsche Bank</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-mono text-slate-500 dark:text-slate-400">DE•• •••• 1234</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400">EUR</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider">
+<span class="size-1.5 rounded-full bg-blue-500"></span>
+                                                Verified
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Tax Escrow</span>
+<span class="text-xs text-slate-500">VAT &amp; Tax savings</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain p-0.5" data-alt="HSBC bank logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIzMLsryW68uDvYImZ7iEqnz8g9RNEl7CrbwfFRdcdnyolXZ-q2tDHbMGZiR2z-7U71wIjY_CaKTtyK7Odw1Mt9QiveJMdP5lwU3s1-mO5p_a5P9OTzByjWfBDaJmIsw2HjY90PpPqSJkodv9EDUBmQ-xxpQL831VFFxztrNEXj4crjfgcre7628mgKOr-nR02oi6MkEUQW9Qc2yYPZQBUGoKlhOyJUTTyy_miaJwEvrsAf4yhlFeXz0qXquZkcnUIYGSafyieFivX"/>
+</div>
+<span class="text-sm text-slate-600 dark:text-slate-300">HSBC</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-sm font-mono text-slate-500 dark:text-slate-400">GB•• •••• 5566</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-600 dark:text-slate-400">GBP</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold uppercase tracking-wider">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+                                                Active
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/20 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<span class="text-xs text-slate-500 dark:text-slate-400">Showing 3 of 12 connected accounts</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400 disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 text-xs font-semibold text-primary">1</button>
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400">2</button>
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400">Next</button>
+</div>
+</div>
+</div>
+<!-- Additional Section: Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+<div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Total Balance (USD)</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">$1,420,950.00</h3>
+<div class="mt-4 flex items-center gap-1 text-emerald-500 text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.5% this month</span>
+</div>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Connected Banks</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">5</h3>
+<p class="mt-4 text-xs text-slate-500 dark:text-slate-400">Across 3 different regions</p>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Pending Verifications</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">0</h3>
+<div class="mt-4 flex items-center gap-1 text-emerald-500 text-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span>All accounts synced</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

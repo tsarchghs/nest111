@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Branches Management - ERP Enterprise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col justify-between p-4">
+<div class="flex flex-col gap-8">
+<!-- Brand Profile -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary/20 rounded-lg p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">layers</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-none">ERP Enterprise</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Admin Console</p>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="text-sm font-medium">Branches</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="text-sm font-medium">Employees</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto px-2">
+<div class="bg-primary/10 rounded-xl p-4 mb-4">
+<p class="text-xs font-semibold text-primary uppercase tracking-wider">Storage Used</p>
+<div class="w-full bg-primary/20 h-1.5 rounded-full mt-2">
+<div class="bg-primary h-1.5 rounded-full w-[75%]"></div>
+</div>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 mt-2">75% of 100GB used</p>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white text-sm font-semibold py-2.5 rounded-lg transition-all shadow-lg shadow-primary/20">
+                    Upgrade Plan
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">domain</span>
+<h2 class="text-lg font-bold tracking-tight">Branches Management</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2.5 block h-1.5 w-1.5 rounded-full bg-red-500 ring-2 ring-white dark:ring-background-dark"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:border-slate-800 mx-1"></div>
+<button class="flex items-center gap-3 pl-2 pr-1 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700">
+<img alt="User avatar" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOvdPR2QI9PtYRlxuJtXL1bmI8qSj_VdTz-eKjKVdwqZ1Q4hd1VIj6r5FOO3FyYZbewMqcSm1f-hOP6EkH5ANj5TUSCXVxXmIp0Fk5fqG-phQkvgV1ec0Yi7JzaR9dKxH8LaQleoa9ANmNQY4fhPsMPE4bq1cnwqhp-Ea4kwBZFAYmPHmT_E7UIewOGo7w7GvzFouaqI1Z92XcQLumY14OSvEI5YiQ4jwAVLYitLEO5nSfwXAibaRYOkE5HGX72RkwaGCyhnCCkM3W"/>
+</div>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white text-sm font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                        Add Branch
+                    </button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<!-- Filters Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-slate-500" placeholder="Search branches by name, ID or manager..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Status:</span>
+<select class="bg-transparent border-none text-xs font-semibold p-0 focus:ring-0 cursor-pointer">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Maintenance</option>
+<option>Inactive</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-xs font-semibold">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            More Filters
+                        </button>
+<button class="flex items-center justify-center p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden backdrop-blur-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">Branch Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">Location</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">Manager</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-400">BR-001</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-[18px]">apartment</span>
+</div>
+<span class="text-sm font-semibold">North Office</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                            New York, NY
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<img alt="Manager" class="w-6 h-6 rounded-full" data-alt="Sarah Chen portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCttvetH_8I54co6YIuAt9chX65MTpTftcH_b5ZtvroCXFQnxEaEtGL-BMy8bVL2kBWEq1yLyVtPwfm_8NvUvdDT1y94gRj4SU-1QFUpA6w_7nM-pIUrUSACGBCcgJkLRVoHb8QvGU0LJ9zcG_b-aCzRMt7reVC6Flpb7n0A0Yol2MDJUeM_5OguMBzSYxdke3PPwKemxvkHF6AvP3FrOCXTgV_V1QYUxCXdt3rE-rv_G9YLYD0Xit5tgDysjvOsDpJ-ZOyGtWPYHK"/>
+<span class="text-sm">Sarah Chen</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-500">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-400">BR-002</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<span class="text-sm font-semibold">South Hub</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                            Austin, TX
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<img alt="Manager" class="w-6 h-6 rounded-full" data-alt="Marcus Rodriguez portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhYoqDdI8HMBfv60y0tDq1zNZ0wQbC-sGtsPh5a-_lSc2Sk_Kwm8rSzYjfInQDqYlHa221aLwpYYcsZXv7MXZ9Z696tPZhRQKTEmdg3driYQ7aRzEBWkh9yQ0P5xPenBYw1OtTeKv7V6chznI5_Y7S60Dgl9r19XhO33DyzHVvD2JDWDV6-DEgksLjqnfQL0ZTAeBN6Ogedhubqzcvoe3GqprdY5h-i82dvCWYlKn2qz3-mpI844P-Q6_EJjStYiJMkuunP-OlKbkB"/>
+<span class="text-sm">Marcus Rodriguez</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-500">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                            Maintenance
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-400">BR-003</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined text-[18px]">corporate_fare</span>
+</div>
+<span class="text-sm font-semibold">West Coast HQ</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                            San Francisco, CA
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<img alt="Manager" class="w-6 h-6 rounded-full" data-alt="Elena Glass portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkimQqPpa-c1pcMELmrPqGHhaaC30n49Zfgm3l5cIsgDzF72dveE9q1LMJzroC_qSKpgjhtLpU8exfNsCHwGqEGkjvoPyCWCMmNGYI8-V7AgEDMxPuGaJv6nZ4NuCo9IWdhCCX6sz4gq5iWlSXr5cjCMwp3GzMHmGrNYtbetrzF4y5D_42HQMbPKdEoChesZCe0KQUwcJ4P_Fqp8ABqQLr8S2uWb_tZq82YmjPqhuLiNC1T-mzZXZyAi1J292880iK0h19XQx1Ta2G"/>
+<span class="text-sm">Elena Glass</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-500/10 text-slate-500 dark:text-slate-400">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                            Inactive
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-400">BR-004</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-[18px]">store</span>
+</div>
+<span class="text-sm font-semibold">East Distribution</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                            Boston, MA
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<img alt="Manager" class="w-6 h-6 rounded-full" data-alt="David Miller portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEy6qgxWnkQIlpl34KMkqnzk_-D2WgNvQGLZhNFOeqCpjFHNjawov_v8iFzjEnFH2rkjX_Cs4DLvzTEAdV-ZUCHzZHbjl9XQe17mazFlzvqpxIzZHx-rB1xByDo9XCSYs70UBaC1BlnDXcO9JAfeb-ggPeqn4lbKyhkL42FykRfcZYWetV67aQh-ISfLHLhhmo5aeh3roL6DZPJweq0j-2tFbQSMRTqiVikdTMjZIQOz249G9areb1nqlTJkmTXznCaRa-d7y9aFA"/>
+<span class="text-sm">David Miller</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-500">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">
+<p class="text-xs text-slate-500 dark:text-slate-400">Showing <span class="font-bold">1</span> to <span class="font-bold">4</span> of <span class="font-bold">24</span> branches</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold">3</button>
+<button class="p-2 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Simple Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+<div class="p-5 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">task_alt</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Branches</p>
+<h3 class="text-2xl font-bold mt-0.5">18</h3>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">engineering</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">In Maintenance</p>
+<h3 class="text-2xl font-bold mt-0.5">3</h3>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">trending_up</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg. Branch Revenue</p>
+<h3 class="text-2xl font-bold mt-0.5">$42.5k</h3>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Business Manager Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">BizStack</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto no-scrollbar">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Sales</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 px-2 py-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+<div class="size-10 rounded-full bg-slate-300 dark:bg-slate-700 flex-shrink-0" data-alt="User profile avatar of a businessman" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmamSCpOLbv16WPdrUjMkWguAU0ttcVGE2js_jUqKOnkefRpaKASez0VifOTYndk3XiS-dmYbRdPDT5dZLZrCoxDmQAE0I7StbgVeStURM7qOSfkwNZo1aqE2pWTbaA6HxGq-77AaZqnMUJhRG0AFKm17L96nH5rG1Aydg-od1W2k7-cWTrMLDaUDld9_fagiR9t2S7bZBdvIpg745-R8yQlwJu6Tagj0bnq1jdnobUA6NK2qdxaN6xmSpZje5ciQ_JAGsaiKtAGxH')"></div>
+<div class="min-w-0">
+<p class="text-sm font-semibold truncate uppercase">Alex Rivera</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Enterprise Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navbar -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shrink-0">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-3 py-1.5 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="text-sm font-medium">Acme Corp.</span>
+<span class="material-symbols-outlined text-sm">unfold_more</span>
+</button>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Quick search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="flex-1 overflow-y-auto p-8 space-y-8 bg-background-light dark:bg-background-dark no-scrollbar">
+<!-- Page Header & Quick Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold">Good morning, Alex</h2>
+<p class="text-slate-500 dark:text-slate-400">Here's what's happening with your business today.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Create Product</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Create Sale</span>
+</button>
+</div>
+</div>
+<!-- Stats Summary Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Sales</p>
+<h3 class="text-2xl font-bold mt-1">$128,430.00</h3>
+</div>
+<div class="text-emerald-500 flex items-center gap-1 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                12.5%
+                            </div>
+</div>
+<div class="h-10 w-full">
+<svg class="w-full h-full stroke-primary fill-none stroke-2" viewbox="0 0 100 20">
+<path d="M0 15 Q 10 5, 20 12 T 40 8 T 60 14 T 80 5 T 100 10" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Products</p>
+<h3 class="text-2xl font-bold mt-1">1,240</h3>
+</div>
+<div class="text-emerald-500 flex items-center gap-1 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                3.2%
+                            </div>
+</div>
+<div class="h-10 w-full text-slate-300">
+<svg class="w-full h-full stroke-emerald-500 fill-none stroke-2" viewbox="0 0 100 20">
+<path d="M0 18 Q 15 15, 30 18 T 50 10 T 70 12 T 100 5" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Monthly Revenue</p>
+<h3 class="text-2xl font-bold mt-1">$45,200.00</h3>
+</div>
+<div class="text-red-500 flex items-center gap-1 text-sm font-medium">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                                2.1%
+                            </div>
+</div>
+<div class="h-10 w-full">
+<svg class="w-full h-full stroke-primary fill-none stroke-2" viewbox="0 0 100 20">
+<path d="M0 5 Q 10 15, 20 8 T 40 14 T 60 5 T 80 18 T 100 12" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-lg">Recent Sales</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs uppercase font-bold tracking-wider">
+<tr>
+<th class="px-6 py-4">Transaction ID</th>
+<th class="px-6 py-4">Customer</th>
+<th class="px-6 py-4">Product</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Date</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">#TRX-94821</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">JS</div>
+<span>James Smith</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Cloud Hosting Basic</td>
+<td class="px-6 py-4 font-semibold">$249.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                            Completed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right text-slate-500 text-sm">2 mins ago</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">#TRX-94822</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-xs">MW</div>
+<span>Maria Williams</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Security Suite</td>
+<td class="px-6 py-4 font-semibold">$499.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-blue-500"></span>
+                                            Processing
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right text-slate-500 text-sm">15 mins ago</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">#TRX-94823</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xs">RJ</div>
+<span>Robert Johnson</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Enterprise API Key</td>
+<td class="px-6 py-4 font-semibold">$1,200.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                            Completed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right text-slate-500 text-sm">1 hour ago</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">#TRX-94824</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs">AL</div>
+<span>Annie Lee</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">Marketing Pack</td>
+<td class="px-6 py-4 font-semibold">$89.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+                                            Refunded
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right text-slate-500 text-sm">3 hours ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Growth Insights -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-bold text-lg mb-2">Growth Opportunity</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Your "Premium Plan" sales are up 20% this week. Consider featuring it on the homepage.</p>
+<button class="px-4 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg text-sm font-semibold">View Insights</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl text-slate-100 dark:text-slate-800/50 group-hover:scale-110 transition-transform">insights</span>
+</div>
+<div class="p-6 bg-primary rounded-xl text-white shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-bold text-lg mb-2">Weekly Goal</h4>
+<p class="text-white/80 text-sm mb-4">You've reached 85% of your target revenue for this week. Keep pushing!</p>
+<div class="w-full bg-white/20 h-2 rounded-full mb-2">
+<div class="bg-white h-2 rounded-full" style="width: 85%"></div>
+</div>
+<span class="text-xs font-bold">15,000 / 18,000 USD</span>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl text-white/10 group-hover:scale-110 transition-transform">auto_awesome</span>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

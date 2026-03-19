@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Manager - Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257bf4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-3 lg:px-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">Invento</h2>
+</div>
+<div class="hidden md:flex items-center gap-1">
+<label class="relative flex items-center min-w-64">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary text-sm placeholder:text-slate-500 text-slate-900 dark:text-slate-100" placeholder="Search products..." type="text"/>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white text-sm font-semibold h-10 px-5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add Product</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-slate-200 dark:border-slate-800 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="User profile avatar with a friendly face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pSDxcs17RvT8apEkIGvCGQbgJaUQMUzVHv1YzNCkvXuunHUVO4qGgVMlKnwmaOmxI3GjLa1E-T25Rc0rqYD3KLih34WikWJrvjW4wHc2NGRPgNyEYy1wi3pu-DWEp5cKNPvrWecdlOYHvOZq9NOwtqap0CJDq2SCECZAj4lUdr1youIYMfgtwPjEccNlBcynaA9DFrYwHu9jinh9PcQm6Q1C08hoTDiypDV7gVqFsa6QZmjtLL8_3dAQhfFXnZFCYyQbQ6hPFQHE"/>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 py-8 lg:px-20">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Products</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Manage your central inventory, stock levels, and store visibility.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-sm">file_download</span>
+                    Export
+                </button>
+<button class="md:hidden flex items-center gap-2 bg-primary text-white text-sm font-semibold h-10 px-5 rounded-lg">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Filters and Controls -->
+<div class="flex flex-wrap items-center gap-3 mb-6">
+<div class="flex items-center bg-white dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-800">
+<button class="px-4 py-1.5 text-xs font-semibold rounded-md bg-primary text-white">All Products</button>
+<button class="px-4 py-1.5 text-xs font-semibold rounded-md text-slate-600 dark:text-slate-400 hover:text-primary">Low Stock</button>
+<button class="px-4 py-1.5 text-xs font-semibold rounded-md text-slate-600 dark:text-slate-400 hover:text-primary">Out of Stock</button>
+</div>
+<div class="flex gap-2 ml-auto">
+<div class="relative group">
+<button class="flex items-center gap-2 px-3 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm">
+<span class="material-symbols-outlined text-base">category</span>
+                        Category
+                        <span class="material-symbols-outlined text-base">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 px-3 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm">
+<span class="material-symbols-outlined text-base">filter_list</span>
+                        Status
+                        <span class="material-symbols-outlined text-base">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto overflow-y-visible">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary">
+                                    Product Name
+                                    <span class="material-symbols-outlined text-sm">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Category</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1 cursor-pointer hover:text-primary">
+                                    Price
+                                    <span class="material-symbols-outlined text-sm">arrow_downward</span>
+</div>
+</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors group">
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">#PRD-001</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="object-cover" data-alt="High quality wireless headphone product image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC15jUQ28T4b0gqzrQ35GuwCNNc2VKwhsLukPPsdS_EYm7Oya-05yZcHP04OEya_n-J65j4WKMfay93tTmXcZWkiKa4QiaBlkEcB2ZmKNkf7Xeq2O8OVTZ3pGhLfiZOkOKigP0qJcd0jJNdV9OLpSWwZ4KBHFNZFTvnR8jCJx10DrkVBOsa1y3UY1YVUchf4PrVCu2sXSySeFw_gTRxLk3lNTdBOrO1I3JzwY14GJVQ5BbBVFPtLSZndr37id5JXVNsP1Cmb6LnZbo4"/>
+</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Wireless Headphones</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Electronics</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">$99.99</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">#PRD-002</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="object-cover" data-alt="RGB mechanical keyboard for gaming" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPV7fmfMCptB_Av0eg5d6iHa3ywxDv2nl85y1JobEqxwnfbpKuank3ixGCj05JV4ZYdTK8RgwPXopx_1UuuPBW1YeQ18Tq5u5bICMzw-Rebk3Qy_CCuEg7AVcQgH6UXzZujfSAg398hkyneTxiFqXvbeEbjFxlJFCznvB-A0pO00-WygBV6kbkm5uHYWkgVhMQHPmpewr9TGdYmAUiSVBAo24ieK-nkNkiGJkXcVKELYtqknZ5b9SqZZgARgianYceD8fQNUx3aRof"/>
+</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Mechanical Keyboard</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Electronics</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">$129.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">#PRD-003</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="object-cover" data-alt="Genuine brown leather wallet with card slots" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIYa_vP8SmL2GCSosg1KCGJBWlesWDPAf8rT_M3GTgyWY67q-kHskdjU6YbG-TboHy6t_iZYRIgBqK2W70RGUXDGXot2JSzm9JWekjvp9mKAnT_z1W6e7rcZSq933NCPquXodrGRXMFhNXQqDNEhLcyZojIlIeSeiISkXCVkhia6m9GkHpTLMM9TiPZ742AyS6b3Hwe4j7hNxc9uDmSh0fEh6361oC0MDSujvBEOeWpB6cwBaFtwVNAd3JRM5KISpMiYt-cSY3tH60"/>
+</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Leather Wallet</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Accessories</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">$45.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+                                    Inactive
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">#PRD-004</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="object-cover" data-alt="Sporty lightweight running shoes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWVDmf8dpdz7SwFVlIZI-NoWEXhNtf6csegjydNFYjnTiWIkBzyj1Ty40Nn48BN_-mLJ8984zlvJOuYbFQgozsTNbqJ60BTw13i1VIRKq928mhe3I25weyzpU2IxLcMo3y7EgHGLwC3iqzd0byzT5hpFHbFoXMe8yblMLLcVUTalTrz8EihaYTutxRxQZjUFVNv-cPHTaozWDbEckDDhkK6x8bK18mjqul2NYQWpW7xjYXIctk_rx4Ogd_Smzq5Dm3bV2ToIVxWJB9"/>
+</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Running Shoes</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Footwear</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">$85.50</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 font-medium">#PRD-005</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="object-cover" data-alt="Minimalist white ceramic coffee mug" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHLAYGShTPgEw9_w7aLVuO1fHGJnM3Ive9eMQETx5aGdqEnsNz3NLut29lLCe-PM4ad8tJcs-7Lydpvj8swXa4H4bD0ZLMIVbZbaUEbtwhvVB_Vwr0dp-y94oKLhdOmq4ypwX0ZAxmZkKNxLykFF8AkWAB6NemA_HrbWjP8Ld_h-2Q53zfsjk_OZ93khB3RiNEDIP5XU8UZwh7MRknNoZ26leuuW4mDpRNBioyqAf0--C7qQYFh9j-CBc2MP1oOFlhxGoOCHCEbrGr"/>
+</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Coffee Mug</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Kitchen</span>
+</td>
+<td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white">$12.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                    Active
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors">
+<span class="material-symbols-outlined text-slate-400">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20">
+<span class="text-sm text-slate-500 dark:text-slate-400">Showing <span class="font-semibold text-slate-900 dark:text-white">1</span> to <span class="font-semibold text-slate-900 dark:text-white">5</span> of <span class="font-semibold text-slate-900 dark:text-white">124</span> results</span>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-9 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary hover:border-primary transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-9 rounded-lg bg-primary text-white font-bold text-sm shadow-md shadow-primary/20">1</button>
+<button class="flex items-center justify-center size-9 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 font-medium text-sm transition-colors">2</button>
+<button class="flex items-center justify-center size-9 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 font-medium text-sm transition-colors">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button class="flex items-center justify-center size-9 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 font-medium text-sm transition-colors">12</button>
+<button class="flex items-center justify-center size-9 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Status Indicator Overlay (optional visual detail) -->
+<div class="fixed bottom-6 right-6">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full py-2 px-4 shadow-xl flex items-center gap-3">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">JD</div>
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-emerald-500/20 flex items-center justify-center text-[10px] font-bold text-emerald-500">AS</div>
+</div>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">2 members online</span>
+<div class="size-2 rounded-full bg-emerald-500 animate-pulse"></div>
+</div>
+</div>
+</div>
+</body></html>

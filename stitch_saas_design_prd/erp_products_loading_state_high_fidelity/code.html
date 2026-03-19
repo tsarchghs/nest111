@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ERP-lite Products Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6cee",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-skeleton {
+            animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<div>
+<h1 class="text-sm font-bold tracking-tight text-slate-900 dark:text-white">ERP-lite</h1>
+<p class="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Business Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                    Products
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">category</span>
+                    Categories
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+                    Sales
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+                    Reports
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">store</span>
+                    Branches
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                    Bank Accounts
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                    Settings
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+<!-- Header -->
+<header class="flex justify-between items-center mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Products</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Inventory overview and SKU performance tracking.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none w-64 text-slate-900 dark:text-slate-100" placeholder="Search products..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>New Product</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-800"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="User Profile" data-alt="User avatar profile picture circular icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu6hJCD47X3plNyI8OMb6PQjw6cqJDkuf4vjYfdVGGeBGI_mAJDjSlMhREHtWjXsRmoLlckbAcu-8vybbRRRtbg4DJ0LIMSMLHRECu1eVG9lBpjg5rt2L_HOBMBKyMFNz0Wlz8vsPQw9vDQI_7DZLWeB7gVwMzZPdcF0P-Uune-Wco-3djgC9d93DZEfnZujG2Hq3VY8Kv5L2uZYEdtXJs3F1h5D5uyvj1XexLl4lIW1cJqD3baTWSt3NcTG5X7wpd7jZES1qBJsh4"/>
+</div>
+</div>
+</header>
+<!-- Stats Grid Skeleton -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm animate-skeleton">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="w-12 h-5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 w-24 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-8 w-32 bg-slate-200 dark:bg-slate-700 rounded"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm animate-skeleton">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="w-12 h-5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 w-20 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-8 w-24 bg-slate-200 dark:bg-slate-700 rounded"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm animate-skeleton">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="w-12 h-5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 w-28 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-8 w-28 bg-slate-200 dark:bg-slate-700 rounded"></div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm animate-skeleton">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="w-12 h-5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+</div>
+<div class="space-y-2">
+<div class="h-4 w-24 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-8 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div>
+</div>
+</div>
+</div>
+<!-- Table Filter Bar Skeleton -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 mb-6 animate-skeleton">
+<div class="flex gap-2">
+<div class="w-24 h-9 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="w-32 h-9 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+</div>
+<div class="w-20 h-9 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+</div>
+<!-- Product Table Skeleton -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 uppercase text-[11px] font-bold tracking-wider">
+<th class="px-6 py-4"><div class="h-4 w-4 bg-slate-200 dark:bg-slate-700 rounded"></div></th>
+<th class="px-6 py-4">Product</th>
+<th class="px-6 py-4">SKU</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4">Stock Status</th>
+<th class="px-6 py-4">Price</th>
+<th class="px-6 py-4">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800 animate-skeleton">
+<!-- Row 1 -->
+<tr>
+<td class="px-6 py-4"><div class="h-4 w-4 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="space-y-1">
+<div class="h-4 w-32 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-3 w-20 bg-slate-50 dark:bg-slate-900 rounded"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><div class="h-4 w-20 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-16 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-24 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-4 w-12 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="h-8 w-8 bg-slate-100 dark:bg-slate-800 rounded"></div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="px-6 py-4"><div class="h-4 w-4 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="space-y-1">
+<div class="h-4 w-40 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-3 w-24 bg-slate-50 dark:bg-slate-900 rounded"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><div class="h-4 w-20 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-16 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-24 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-4 w-12 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="h-8 w-8 bg-slate-100 dark:bg-slate-800 rounded"></div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td class="px-6 py-4"><div class="h-4 w-4 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="space-y-1">
+<div class="h-4 w-28 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-3 w-16 bg-slate-50 dark:bg-slate-900 rounded"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><div class="h-4 w-20 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-16 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-24 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-4 w-12 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="h-8 w-8 bg-slate-100 dark:bg-slate-800 rounded"></div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr>
+<td class="px-6 py-4"><div class="h-4 w-4 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="space-y-1">
+<div class="h-4 w-36 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-3 w-28 bg-slate-50 dark:bg-slate-900 rounded"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><div class="h-4 w-20 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-16 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-24 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-4 w-12 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="h-8 w-8 bg-slate-100 dark:bg-slate-800 rounded"></div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td class="px-6 py-4"><div class="h-4 w-4 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="space-y-1">
+<div class="h-4 w-32 bg-slate-100 dark:bg-slate-800 rounded"></div>
+<div class="h-3 w-20 bg-slate-50 dark:bg-slate-900 rounded"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><div class="h-4 w-20 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-16 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-6 w-24 bg-slate-100 dark:bg-slate-800 rounded-full"></div></td>
+<td class="px-6 py-4"><div class="h-4 w-12 bg-slate-100 dark:bg-slate-800 rounded"></div></td>
+<td class="px-6 py-4">
+<div class="h-8 w-8 bg-slate-100 dark:bg-slate-800 rounded"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Pagination Skeleton -->
+<div class="flex items-center justify-between py-6 animate-skeleton">
+<div class="h-4 w-48 bg-slate-200 dark:bg-slate-800 rounded"></div>
+<div class="flex gap-2">
+<div class="h-9 w-24 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+<div class="h-9 w-24 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
